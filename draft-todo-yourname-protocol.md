@@ -50,7 +50,7 @@ author:
 normative:
 
 informative:
-[^1]: Lichvar, M. and T. Mizrahi, Network Time Protocol Version 5.
+[^1]: Lichvar, M. and T. Mizrahi, Network Time Protocol Version 5 .
 
 
 
