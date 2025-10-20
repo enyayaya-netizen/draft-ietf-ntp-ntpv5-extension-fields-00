@@ -89,7 +89,7 @@ Monotonic Raw Destination Timestamps (raw_dst): Time of the monotonic raw clock 
 # Monotonic Receive Timestamp Extension Field in NTPv5
 
 The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) [RFC5905], the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1.
-``text
+```text
 +---------------------------------------+  
 | ClockID  in Linux  | STEP| SLEW |  
 +---------------------------------------|  
