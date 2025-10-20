@@ -153,7 +153,7 @@ Table of Contents
            +===================+===============+===============+
            | CClockID in Linux | STEP          | SLEW          |
            +===================+===============+===============+
-           | Cell 1, Row 1     | Cell 2, Row 1 | Cell 2, Row 1 |
+           | CLOCk_REALTIME    | Cell 2, Row 1 | Cell 2, Row 1 |
            +-------------------+---------------+---------------+
            | Cell 1, Row 2     | Cell 1, Row 2 | Cell 1, Row 2 |
            +-------------------+---------------+---------------+
@@ -164,8 +164,8 @@ Table of Contents
 
    | ClockID in Linux | STEP | SLEW | | ------------------- |
    -------- |-------- | | CLOCk_REALTIME | YES | YES | |
-   CLOCK_MONOTONIC | NO | YES | | CLOCK_MONOTONIC_RAW | NO | NO | Impact
-   of NTP clock adjustment on clock rate/frequency.
+   CLOCK_MONOTONIC | NO | YES | | CLOCK_MONOTONIC_RAW | NO | NO |
+   Impact of NTP clock adjustment on clock rate/frequency.
 
    In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-
    requirements-04], it is recommended to adopt a linear and monotonic
