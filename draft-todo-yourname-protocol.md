@@ -68,6 +68,7 @@ informative:
         author:
           - ins: M. Lichvar
           - ins: T. Mizrahi
+        seriesinfo: Internet-Draft, draft-ietf-ntp-ntpv5-06
         date: 10 September 2025
         target: https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06
       I-D.ietf-ntp-ntpv5-requirements:
