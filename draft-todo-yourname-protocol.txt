@@ -162,7 +162,7 @@ Table of Contents
 
                                   Table 1
 
-   Table 1 - Impact of NTP clock adjustment on clock rate/frequency.
+   Figure 1 — Impact of NTP clock adjustment on clock rate/frequency.
 
    In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-
    requirements-04], it is recommended to adopt a linear and monotonic
