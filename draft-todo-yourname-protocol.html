@@ -5,7 +5,7 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>NTPv5 Timestamp Extension Field</title>
-<meta content="Guanhua Zhuang" name="author">
+<meta content="Siyu Tang" name="author">
 <meta content="
        This document describes an alternative timestamp to the Monotonic Receive Timestamp Extension Field defined in NTP version 5 (NTPv5) when transferring frequency offset. The new extension field, named Monotonic RAW Receive Timestamp Extension Field uses a stable clock source that is not affected by NTP adjustment. It provides more accurate frequency-transfer offset between a remote server and local client, which further enhances the accuracy of time synchronization. 
     " name="description">
@@ -1048,7 +1048,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">October 2025</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Zhuang</td>
+<td class="left">Tang</td>
 <td class="center">Expires 23 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1071,7 +1071,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
-      <div class="author-name">G. Zhuang</div>
+      <div class="author-name">S. Tang</div>
 <div class="org">Huawei Technologies</div>
 </div>
 </dd>
@@ -1189,6 +1189,10 @@ This document proposes a stable clock source whose rate is not affected by NTP a
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">Monotonic Raw Original Timestamps (raw_org): Time of the monotonic raw clock at the client when the request departed for the server, in NTP timestamp format.
+Monotonic Raw Receive Timestamps (raw_rec): Time of the monotonic raw clock at the server when the request arrived from the client, in NTP timestamp format. 
+Monotonic Raw Transmit Timestamps (raw_xmt): Time of the monotonic raw clock at the server when the response left for the client, in NTP timestamp format.
+Monotonic Raw Destination Timestamps (raw_dst): Time of the monotonic raw clock at the client when the reply arrived from the server, in NTP timestamp format.<a href="#section-2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1196,7 +1200,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-security-considerations">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">As this document is intended to create discussion and consensus, it introduces no security considerations of its own.<a href="#section-3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1238,11 +1242,11 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Guanhua Zhuang</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Siyu Tang</span></div>
 <div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:zhuangguanhua@huawei.com" class="email">zhuangguanhua@huawei.com</a>
+<a href="mailto:siyutang@huawei.com" class="email">siyutang@huawei.com</a>
 </div>
 </address>
 </section>
