@@ -125,6 +125,7 @@ Assume a multi-hop scenario with n stratum levels. The primary server determines
 For simplicity, assume that all nodes (other than the primary server) have successfully learnt their frequency-transfer offset relative to the preceding server at time t_k. Without the Frequency To The Root Server Extension Field, synchronization of a server to the primary server happens sequentially in time, i.e., a server with stratum level i needs to wait for its immediate preceding server (with stratum level i-1) to complete the operation of setting frequency-transfer offset. Note the operation of setting frequency offset is decoupled with NTP message exchange. This can take longer for the server at the last stratum level to synchronize with the primary server. With the assist of the Frequency To The Root Server Extension Field, the frequency-transfer offset of a server relative to the primary server can be immediately passed down in an NTP message, allowing the succeeding nodes to synchronize their frequency relative to the primary server once receiving that message. 
 
 
+
 # Security Considerations
 
 As this document is intended to create discussion and consensus, it introduces no security considerations of its own.
