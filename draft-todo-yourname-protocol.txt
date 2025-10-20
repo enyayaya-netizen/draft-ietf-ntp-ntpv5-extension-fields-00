@@ -2,10 +2,10 @@
 
 
 
-NTP                                                            G. Zhuang
-Internet-Draft                                       Huawei Technologies
-Intended status: Informational                           20 October 2025
-Expires: 23 April 2026
+NTP                                                              S. Tang
+Internet-Draft                                                 G. Zhuang
+Intended status: Informational                       Huawei Technologies
+Expires: 23 April 2026                                   20 October 2025
 
 
                     NTPv5 Timestamp Extension Field
@@ -76,7 +76,7 @@ Table of Contents
    4.  IANA Considerations
    5.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -131,7 +131,12 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
+
+   Siyu Tang
+   Huawei Technologies
+   Email: siyutang@huawei.com
+
 
    Guanhua Zhuang
    Huawei Technologies
