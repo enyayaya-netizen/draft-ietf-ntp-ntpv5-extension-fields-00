@@ -148,21 +148,12 @@ Table of Contents
    during a certain amount of time.  The clock rate used to measure the
    Monotonic Receive Timestamp remains unchanged if the system clock is
    stepped, but is subject to changes if the clock is slewed, see
-   Figure 1.
+   Table 1.
 
-                   +=====================+======+======+
-                   | ClockID in Linux    | STEP | SLEW |
-                   +=====================+======+======+
-                   | CLOCK_REALTIME      | YES  | YES  |
-                   +---------------------+------+------+
-                   | CLOCK_MONOTONIC     |  NO  | YES  |
-                   +---------------------+------+------+
-                   | CLOCK_MONOTONIC_RAW |  NO  |  NO  |
-                   +---------------------+------+------+
-
-                                  Table 1
-
-   Figure 1 Impact of NTP clock adjustment on clock rate/frequency.
+   | ClockID in Linux | STEP |
+   SLEW | |--------------------------|:----:|:----:| | CLOCK_REALTIME |
+   YES | YES | | CLOCK_MONOTONIC | NO | YES | | CLOCK_MONOTONIC_RAW |
+   NO | NO | Impact of NTP clock adjustment on clock rate/frequency.
 
    In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-
    requirements-04], it is recommended to adopt a linear and monotonic
