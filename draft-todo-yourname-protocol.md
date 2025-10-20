@@ -55,7 +55,10 @@ author:
 
     
 informative:
-
+    - I-D.draft-ietf-ntp-ntpv5
+    - draft-ietf-ntp-ntpv5-requirements-04
+    - RFC5905
+    - Chrony-project
 
 
 
