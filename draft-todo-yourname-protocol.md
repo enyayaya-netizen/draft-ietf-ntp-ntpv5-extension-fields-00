@@ -85,15 +85,15 @@ Monotonic Raw Destination Timestamps (raw_dst): Time of the monotonic raw clock 
 
 The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) [RFC5905], the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1. 
 
-+---------------------------------------------------------------------------------------------------------------------------+
-| ClockID   in Linux                           |    STEP                           |    SLEW                                |
-+---------------------------------------------------------------------------------------------------------------------------|
-| CLOCk_REALTIME                               |    YES                            |     YES          |                     |
-|                                                                                                                           |
-| CLOCK_MONOTONIC                              |    NO                             |     YES          |                     |
-|                                                                                                                           |
-| CLOCK_MONOTONIC_RAW                          |    NO                             |     NO           |                     |
-+--------------------------------------------------------------------------------------------------------------------------|                         
++-------------------------------------------------------------------------------------------------------------------------+  
+| ClockID   in Linux                           |    STEP                           |    SLEW                              |  
++-------------------------------------------------------------------------------------------------------------------------|  
+| CLOCk_REALTIME                               |    YES                            |     YES          |                   |  
+|                                                                                                                         |  
+| CLOCK_MONOTONIC                              |    NO                             |     YES          |                   |  
+|                                                                                                                         |  
+| CLOCK_MONOTONIC_RAW                          |    NO                             |     NO           |                   |  
++-------------------------------------------------------------------------------------------------------------------------|                           
 Figure 1 Impact of NTP clock adjustment on clock rate/frequency. 
 
 In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-requirements-04], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5. 
