@@ -150,17 +150,10 @@ Table of Contents
    stepped, but is subject to changes if the clock is slewed, see
    Table 1.
 
-           +===================+===============+===============+
-           | CClockID in Linux | STEP          | SLEW          |
-           +===================+===============+===============+
-           | CLOCk_REALTIME    | Cell 2, Row 1 | Cell 2, Row 1 |
-           +-------------------+---------------+---------------+
-           | Cell 1, Row 2     | Cell 1, Row 2 | Cell 1, Row 2 |
-           +-------------------+---------------+---------------+
-           | Cell 1, Row 2     | Cell 1, Row 2 | Cell 1, Row 2 |
-           +-------------------+---------------+---------------+
-
-                                  Table 1
+   | CClockID in Linux | STEP | SLEW | | ----------------------- |
+   ------------- |-------------- | |CLOCk_REALTIME | YES|
+   YES | |CLOCK_MONOTONIC | NO | YES | |CLOCK_MONOTONIC_RAW | NO | NO |
+   Impact of NTP clock adjustment on clock rate/frequency.
 
    | ClockID in Linux | STEP | SLEW | | ------------------- |
    -------- |-------- | | CLOCk_REALTIME | YES | YES | |
@@ -249,7 +242,7 @@ Table of Contents
                      | Cell 1, Row 2 | Cell 1, Row 2 |
                      +---------------+---------------+
 
-                                  Table 2
+                                  Table 1
 
    Assume a multi-hop scenario with n stratum levels.  The primary
    server determines the frequency offset between the Realtime clock and
