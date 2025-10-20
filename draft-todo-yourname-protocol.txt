@@ -72,6 +72,7 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
+     2.1.  Terminology
    3.  Monotonic Receive Timestamp Extension Field in NTPv5
    4.  Monotonic RAW Timestamp Extension Fields
      4.1.  Monotonic Raw Receive Timestamp Extension Field
@@ -118,6 +119,8 @@ Table of Contents
    "OPTIONAL" in this document are to be interpreted as described in
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
+
+2.1.  Terminology
 
    Monotonic Raw Original Timestamps (raw_org): Time of the monotonic
    raw clock at the client when the request departed for the server, in
