@@ -90,7 +90,7 @@ The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a differen
 | CLOCk_REALTIME      |    YES   |   YES   |
 | CLOCK_MONOTONIC     |    NO    |   YES   |
 | CLOCK_MONOTONIC_RAW |    NO    |   NO    |
-     Impact of NTP clock adjustment on clock rate/frequency.                     
+     Impact of NTP clock adjustment on clock rate/frequency.                      
 
 
 In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-requirements-04], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5. 
