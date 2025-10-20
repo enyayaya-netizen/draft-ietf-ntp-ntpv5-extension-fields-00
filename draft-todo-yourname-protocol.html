@@ -1238,57 +1238,13 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-monotonic-receive-timestamp" class="section-name selfRef">Monotonic Receive Timestamp Extension Field in NTPv5</a>
       </h2>
 <p id="section-3-1">The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) [RFC5905], the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Table 1.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">Impact of NTP clock adjustment on clock rate/frequency.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<table class="center" id="table-1">
-        <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
-<thead>
-          <tr>
-            <th class="text-left" rowspan="1" colspan="1">Column 1</th>
-            <th class="text-left" rowspan="1" colspan="1">Column 2</th>
-            <th class="text-left" rowspan="1" colspan="1">Column 2</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">Cell 1, Row 1</td>
-            <td class="text-left" rowspan="1" colspan="1">Cell 2, Row 1</td>
-            <td class="text-left" rowspan="1" colspan="1">Cell 2, Row 1</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">Cell 1, Row 2</td>
-            <td class="text-left" rowspan="1" colspan="1">Cell 1, Row 2</td>
-            <td class="text-left" rowspan="1" colspan="1">Cell 2, Row 1</td>
-          </tr>
-        </tbody>
-      </table>
-<table class="center" id="table-2">
-        <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
-<thead>
-          <tr>
-            <th class="text-left" rowspan="1" colspan="1">ClockID in Linux</th>
-            <th class="text-left" rowspan="1" colspan="1">STEP</th>
-            <th class="text-left" rowspan="1" colspan="1">SLEW</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">CLOCk_REALTIME</td>
-            <td class="text-left" rowspan="1" colspan="1">YES</td>
-            <td class="text-left" rowspan="1" colspan="1">YES</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">CLOCK_MONOTONIC</td>
-            <td class="text-left" rowspan="1" colspan="1">NO</td>
-            <td class="text-left" rowspan="1" colspan="1">YES</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">CLOCK_MONOTONIC_RAW</td>
-            <td class="text-left" rowspan="1" colspan="1">NO</td>
-            <td class="text-left" rowspan="1" colspan="1">NO</td>
-          </tr>
-        </tbody>
-      </table>
-<p id="section-3-5">In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-requirements-04], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-2">| ClockID in Linux    | STEP     |  SLEW   | 
+| ------------------- | -------- |-------- |
+| CLOCk_REALTIME      |    YES   |   YES   |
+| CLOCK_MONOTONIC     |    NO    |   YES   |
+| CLOCK_MONOTONIC_RAW |    NO    |   NO    |
+     Impact of NTP clock adjustment on clock rate/frequency.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-requirements-04], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5.<a href="#section-3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="monotonic-raw-timestamp-extension-fields">
