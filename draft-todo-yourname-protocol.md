@@ -43,8 +43,10 @@ venue:
   latest: https://example.com/LATEST
 
 author:
- -Siyu Tang, Huawei Technologies, siyutang@huawei.com
- -Guanhua Zhuang, Huawei Technologies, zhuangguanhua@huawei.com
+ -
+    fullname: Siyu Tang, Guanhua Zhuang
+    organization: Huawei Technologies
+    email: siyutang@huawei.com, zhuangguanhua@huawei.com
 
 normative:
 
