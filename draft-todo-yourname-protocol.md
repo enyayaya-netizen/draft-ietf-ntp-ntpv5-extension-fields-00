@@ -47,7 +47,6 @@ author:
     fullname: Siyu Tang
     organization: Huawei Technologies
     email: siyutang@huawei.com
-normative:
 
 informative:
 [^1]: Lichvar, M. and T. Mizrahi, Network Time Protocol Version 5 .
