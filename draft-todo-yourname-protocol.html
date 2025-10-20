@@ -1196,7 +1196,15 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
@@ -1210,8 +1218,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] introduces a Monotonic Receive Timestamp Extension Field to transfer frequency in addition to the time-transfer offset captured by the receive and transmit timestamps in the header. Separation of time and frequency transfer using different clocks shall enhance synchronization accuracy. 
-It should be noted that when the system clock is slewed [RFC5905], the clock rate of the Monotonic Receive Timestamp Extension Field changes accordingly, i.e., clock rate diverges from the rate of the crystal. This introduces additional errors when performing frequency transfer, hence, negatively impact the accuracy of clock synchronization. 
+<p id="section-1-1">NTP version 5 (NTPv5) <span>[<a href="#I-D.draft-ietf-ntp-ntpv5" class="cite xref">I-D.draft-ietf-ntp-ntpv5</a>]</span> introduces a Monotonic Receive Timestamp Extension Field to transfer frequency in addition to the time-transfer offset captured by the receive and transmit timestamps in the header. Separation of time and frequency transfer using different clocks shall enhance synchronization accuracy. 
+It should be noted that when the system clock is slewed <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span>, the clock rate of the Monotonic Receive Timestamp Extension Field changes accordingly, i.e., clock rate diverges from the rate of the crystal. This introduces additional errors when performing frequency transfer, hence, negatively impact the accuracy of clock synchronization. 
 This document proposes a stable clock source whose rate is not affected by NTP adjustment. The Monotonic RAW Receive Timestamp Extension Field is recommended to faithfully reflect the crystal rate, despite stepping or slewing a system clock. In case of link asymmetry, the Monotonic RAW Transmit Timestamp Extension Field is recommended in addition to the Monotonic RAW Receive Timestamp Extension Field. Measurements from the two extension fields can be used to identify link asymmetry and enhance time synchronization accuracy.<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1242,7 +1250,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-monotonic-receive-timestamp">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-monotonic-receive-timestamp" class="section-name selfRef">Monotonic Receive Timestamp Extension Field in NTPv5</a>
       </h2>
-<p id="section-3-1">The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) [RFC5905], the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span>, the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <table class="center" id="table-1">
         <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
 <thead>
@@ -1325,7 +1333,7 @@ Figure 2 Format of a Frequency To The Root Server Extension Field.<a href="#sect
       </h2>
 <p id="section-5-1">## Frequency transfer function assisted with the Monotonic Receive Timestamp Extension Field
 NTPv5 does not disclose details on an algorithm that assist the implementation of the frequency transfer function in conjunction with the Monotonic Receive Timestamp Extension Field. One feasible implementation is to subtract the difference between two consecutive Monotonic Receive Timestamps from the difference between two consecutive Receive timestamps. This gives us the amount of correction that to be applied to the time-transfer offset. Once the time-transfer offset is corrected, the frequency-transfer offset can be derived using techniques such as linear regression from a number of time-transfer offset samples. When the system clock is stepped, the monotonic clock rate is unaffected. The above function will truthfully recover the frequency-transfer offset from a set of measurement samples. If the system clock is slewed, a client can note down the change of frequency over a certain amount of time. This allows the client to compensate the frequency change caused by clock slew. However, the Monotonic Receive Timestamp Extension Field is not able to recover the amount of slewed frequency in the remote server. This introduces errors while estimating the frequency-transfer offset. 
-To the knowledge of the author, Chrony 4.7 release [Chrony-project] is the only open source implementation of the Monotonic Receive Timestamp extension field and the frequency transfer function defined in NTPv5. The performance of Chrony 4.7 in terms of frequency-transfer offset estimation would encounter the same issue if the system clock is slewed. In a multi-hop scenario, the frequency-transfer offset between a server and client pair may not converge. This will negatively impact the synchronization accuracy of following nodes.<a href="#section-5-1" class="pilcrow">¶</a></p>
+To the knowledge of the author, Chrony 4.7 release <span>[<a href="#Chrony-project" class="cite xref">Chrony-project</a>]</span> is the only open source implementation of the Monotonic Receive Timestamp extension field and the frequency transfer function defined in NTPv5. The performance of Chrony 4.7 in terms of frequency-transfer offset estimation would encounter the same issue if the system clock is slewed. In a multi-hop scenario, the frequency-transfer offset between a server and client pair may not converge. This will negatively impact the synchronization accuracy of following nodes.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <div id="frequency-transfer-function-assisted-with-the-monotonic-raw-receive-timestamp-extension-field">
 <section id="section-5.1">
         <h3 id="name-frequency-transfer-function">
@@ -1362,21 +1370,53 @@ The client can carefully apply a filter algorithm to take out anomalies on T2_ra
 <p id="section-7-1">This document has no IANA actions.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-normative-references">
+<div id="sec-combined-references">
 <section id="section-8">
-      <h2 id="name-normative-references">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+      <h2 id="name-references">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
+<section id="section-8.1">
+        <h3 id="name-normative-references">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-8.2">
+        <h3 id="name-informative-references">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="Chrony-project">[Chrony-project]</dt>
+        <dd>
+<span class="refTitle">"Chrony 4.7"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://chrony.tuxfamily.org/">https://chrony.tuxfamily.org/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.draft-ietf-ntp-ntpv5">[I-D.draft-ietf-ntp-ntpv5]</dt>
+        <dd>
+<span class="refAuthor">Franke, D.</span> and <span class="refAuthor">Others</span>, <span class="refTitle">"Network Time Protocol Version 5"</span>, <time datetime="2025-10" class="refDate">October 2025</time>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-ntp-ntpv5-requirements">[I-D.ietf-ntp-ntpv5-requirements]</dt>
+        <dd>
+<span class="refAuthor">O'Donoghue, K.</span> and <span class="refAuthor">Others</span>, <span class="refTitle">"NTP Version 5 use cases and requirements"</span>, <time datetime="2025-10" class="refDate">October 2025</time>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5905">[RFC5905]</dt>
+      <dd>
+<span class="refAuthor">Mills, D.</span> and <span class="refAuthor">Others</span>, <span class="refTitle">"Network Time Protocol Version 4: Protocol and Algorithms Specification"</span>, <span class="seriesInfo">RFC 5905</span>, <span class="seriesInfo">DOI 10.17487/RFC5905</span>, <time datetime="2010" class="refDate">2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5905">https://www.rfc-editor.org/rfc/rfc5905</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
 </section>
 </div>
 <div id="authors-addresses">
