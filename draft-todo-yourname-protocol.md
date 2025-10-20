@@ -93,6 +93,7 @@ Impact of NTP clock adjustment on clock rate/frequency.
 | Cell 1, Row 2 | Cell 1, Row 2 |Cell 2, Row 1 |
 
 
+
 | ClockID in Linux    | STEP     |  SLEW   | 
 | ------------------- | -------- |-------- |
 | CLOCk_REALTIME      |    YES   |   YES   |
