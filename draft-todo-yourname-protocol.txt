@@ -381,6 +381,7 @@ Table of Contents
 
    [I-D.ietf-ntp-ntpv5-requirements]
               Gruessing, J., "NTP Version 5 use cases and requirements",
+              Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04 ,
               January 2024, <https://www.ietf.org/archive/id/draft-ietf-
               ntp-ntpv5-requirements-04.html>.
 
