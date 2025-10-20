@@ -44,10 +44,12 @@ venue:
 
 author:
  -
-    fullname: Siyu Tang, Guanhua Zhuang
+    fullname: Siyu Tang
     organization: Huawei Technologies
-    email: siyutang@huawei.com, zhuangguanhua@huawei.com
-
+    email: siyutang@huawei.com
+    fullname: Guanhua Zhuang
+    organization: Huawei Technologies
+    email: zhuangguanhua@huawei.com
 normative:
 
 informative:
