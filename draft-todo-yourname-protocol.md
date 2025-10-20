@@ -49,7 +49,7 @@ author:
     email: siyutang@huawei.com
 
 informative:
-[^1]: Lichvar, M. and T. Mizrahi, Network Time Protocol Version 5 .
+
 
 
 
