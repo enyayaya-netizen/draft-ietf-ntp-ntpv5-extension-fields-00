@@ -3,10 +3,9 @@
 
 
 NTP                                                              S. Tang
-Internet-Draft                                       Huawei Technologies
-Intended status: Informational                                 S. Author
-Expires: 23 April 2026                               Second Organization
-                                                         20 October 2025
+Internet-Draft                                                 G. Zhuang
+Intended status: Informational                       Huawei Technologies
+Expires: 23 April 2026                                   20 October 2025
 
 
                     NTPv5 Timestamp Extension Field
@@ -363,6 +362,6 @@ Authors' Addresses
    Email: siyutang@huawei.com
 
 
-   Second Author
-   Second Organization
-   Email: second@example.com
+   Guanhua Zhuang
+   Huawei Technologies
+   Email: zhuangguanhua@huawei.com
