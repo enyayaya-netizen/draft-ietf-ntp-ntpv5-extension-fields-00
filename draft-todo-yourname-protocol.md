@@ -22,7 +22,7 @@
 title: "NTPv5 Timestamp Extension Field"
 category: info
 
-docname: draft-ietf-ntp-ntpv5-extension-00
+docname: draft-ietf-ntp-ntpv5-timestamp-extension-field-00
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
