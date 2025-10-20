@@ -42,12 +42,12 @@ venue:
   github: USER/REPO
   latest: https://example.com/LATEST
 
-author:
+author 1:
  -
     fullname: Siyu Tang
     organization: Huawei Technologies
     email: siyutang@huawei.com
-author:
+author 2:
  -
     fullname: Guanhua Zhuang
     organization: Huawei Technologies
