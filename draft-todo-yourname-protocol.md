@@ -116,22 +116,13 @@ In NTPv5, the frequency-transfer offset is computed as the offset of a client re
 The Frequency To The Root Server Extension Field contains the frequency-transfer offset of a client relative to the Realtime clock of the primary server. This extension field has a fixed length of 12 octets. The 1-bit sign bit is a binary number indicates if the frequency of a client is faster (1) or slower (0) relative to the primary server. The absolute frequency-transfer offset relative to the primary server is carried by the remaining 31-bit.  
 
 
-   
-|0| | | | | | | | | |1| | | | | | | | | |2| | | | | | | | | |3
-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
-|0|1|2|3|4|5|6|7|8|9|0|1|2|3|4|5|6|7|8|9|0|1|2|3|4|5|6|7|8|9|0|1|
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-| Type = [[TBD]] (draft 0xF508)  |           Length           |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
-|s|               Frequency To The Root Server (31)           |  
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
 
 
                   
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
 |--Type=[[TBD]] (draft 0xF508)--|------------Length-----------|  
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ 
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
 |s|--------------Frequency To The Root Server (31)------------|  
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
 Figure 2 Format of a Frequency To The Root Server Extension Field.
