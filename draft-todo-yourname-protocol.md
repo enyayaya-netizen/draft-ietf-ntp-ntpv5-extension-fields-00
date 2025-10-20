@@ -52,19 +52,18 @@ author:
     organization: Huawei Technologies
     email: zhuangguanhua@huawei.com
 
-normative:
+# Status of this Memo
+This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79. 
+Internet-Drafts are working documents of the Internet Engineering Task Force (IETF), its areas, and its working groups.  Note that other groups may also distribute working documents as Internet-Drafts.
+Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."
+This Internet-Draft will expire on 20 April, 2026.
 
-informative:
-
-[I-D.draft-ietf-ntp-ntpv5]	Lichvar, M. and T. Mizrahi, "Network Time Protocol Version 5", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-06, 10 September 2025, <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06>. 
-[RFC5905] Mills, D., Martin, J., Ed., Burbank, J., and W. Kasch, "Network Time Protocol Version 4: Protocol and Algorithms Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010, <https://www.rfc-editor.org/rfc/rfc5905>.
-
-[draft-ietf-ntp-ntpv5-requirements-04]	J. Gruessing, "NTPv5 Use Cases and Requirements", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04, 28 January 2024, < https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html>.
-
-[Chrony-project] “The Chrony Project”, n.d., <https://chrony-project.org/index.html>. 
+# Copyright Notice
+Copyright (c) 2025 IETF Trust and the persons identified as the document authors. All rights reserved.
+This document is subject to BCP 78 and the IETF Trust’s Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.
 
 
---- abstract
+# Abstract
 
 This document describes an alternative timestamp to the Monotonic Receive Timestamp Extension Field defined in NTP version 5 (NTPv5) when transferring frequency offset. The new extension field, named Monotonic RAW Receive Timestamp Extension Field uses a stable clock source that is not affected by NTP adjustment. It provides more accurate frequency-transfer offset between a remote server and local client, which further enhances the accuracy of time synchronization. 
 
@@ -74,6 +73,18 @@ This document describes an alternative timestamp to the Monotonic Receive Timest
 NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] introduces a Monotonic Receive Timestamp Extension Field to transfer frequency in addition to the time-transfer offset captured by the receive and transmit timestamps in the header. Separation of time and frequency transfer using different clocks shall enhance synchronization accuracy. 
 It should be noted that when the system clock is slewed [RFC5905], the clock rate of the Monotonic Receive Timestamp Extension Field changes accordingly, i.e., clock rate diverges from the rate of the crystal. This introduces additional errors when performing frequency transfer, hence, negatively impact the accuracy of clock synchronization. 
 This document proposes a stable clock source whose rate is not affected by NTP adjustment. The Monotonic RAW Receive Timestamp Extension Field is recommended to faithfully reflect the crystal rate, despite stepping or slewing a system clock. In case of link asymmetry, the Monotonic RAW Transmit Timestamp Extension Field is recommended in addition to the Monotonic RAW Receive Timestamp Extension Field. Measurements from the two extension fields can be used to identify link asymmetry and enhance time synchronization accuracy.  
+
+# Conventions and Definitions
+
+## Terminology
+Monotonic Raw Original Timestamps (raw_org): Time of the monotonic raw clock at the client when the request departed for the server, in NTP timestamp format.
+Monotonic Raw Receive Timestamps (raw_rec): Time of the monotonic raw clock at the server when the request arrived from the client, in NTP timestamp format. 
+Monotonic Raw Transmit Timestamps (raw_xmt): Time of the monotonic raw clock at the server when the response left for the client, in NTP timestamp format.
+Monotonic Raw Destination Timestamps (raw_dst): Time of the monotonic raw clock at the client when the reply arrived from the server, in NTP timestamp format.
+
+## Requirements Language
+In examples, "C:" and "S:" indicate lines sent by the client and server respectively.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [RFC2119]. 
 
 # Monotonic Receive Timestamp Extension Field in NTPv5
 The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) [RFC5905], the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1. 
@@ -126,15 +137,6 @@ Alternatively, a client can choose to determine the difference between the Monot
 The Monotonic Raw Transmit Timestamp Extension Field should always be used together with the Monotonic Raw Receive Timestamp Extension Field to enable bi-directional measurement. In case of link asymmetry, the forward and backward paths would experience different delay/jitter. Thus, T2_rwaw-T1_raw demonstrates distinct different behavior than T3_raw-T4_raw, i.e., difference between the Monotonic Raw Transmit Timestamps (T3_raw) in the extension field and the Monotonic Raw Destination Timestamps (T4_raw) at the client. 
 The client can carefully apply a filter algorithm to take out anomalies on T2_raw-T1_raw and T3_raw-T4_raw respectively. Averaging over T’2_raw-T’1_raw and T’3_raw-T’4_raw gives us the offset and delay of the monotonic raw clock of a client relative to the server. the superscript ’ denotes data samples that are left after applying the filtering mechanism(s). The slope of the delay (or offset) derived from the monotonic raw timestamps would more truthfully reflect the true frequency-transfer offset between a server and client.  
 
-# Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
-Monotonic Raw Original Timestamps (raw_org): Time of the monotonic raw clock at the client when the request departed for the server, in NTP timestamp format.
-Monotonic Raw Receive Timestamps (raw_rec): Time of the monotonic raw clock at the server when the request arrived from the client, in NTP timestamp format. 
-Monotonic Raw Transmit Timestamps (raw_xmt): Time of the monotonic raw clock at the server when the response left for the client, in NTP timestamp format.
-Monotonic Raw Destination Timestamps (raw_dst): Time of the monotonic raw clock at the client when the reply arrived from the server, in NTP timestamp format.
-
-
 # Security Considerations
 
 As this document is intended to create discussion and consensus, it introduces no security considerations of its own.
@@ -144,3 +146,13 @@ As this document is intended to create discussion and consensus, it introduces n
 
 This document has no IANA actions.
 
+# Reference
+## normative:
+
+## informative:
+[I-D.draft-ietf-ntp-ntpv5]	Lichvar, M. and T. Mizrahi, "Network Time Protocol Version 5", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-06, 10 September 2025, <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06>. 
+[RFC5905] Mills, D., Martin, J., Ed., Burbank, J., and W. Kasch, "Network Time Protocol Version 4: Protocol and Algorithms Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010, <https://www.rfc-editor.org/rfc/rfc5905>.
+
+[draft-ietf-ntp-ntpv5-requirements-04]	J. Gruessing, "NTPv5 Use Cases and Requirements", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04, 28 January 2024, < https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html>.
+
+[Chrony-project] “The Chrony Project”, n.d., <https://chrony-project.org/index.html>. 
