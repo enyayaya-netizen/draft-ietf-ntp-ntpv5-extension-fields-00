@@ -68,14 +68,16 @@ informative:
         author:
           - ins: M. Lichvar
           - ins: T. Mizrahi
-        seriesinfo: Internet-Draft, draft-ietf-ntp-ntpv5-06
+        seriesinfo: 
+          DOI: Internet-Draft, draft-ietf-ntp-ntpv5-06
         date: 10 September 2025
         target: https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06
       I-D.ietf-ntp-ntpv5-requirements:
         title: "NTP Version 5 use cases and requirements"
         author:
           - ins: J. Gruessing
-        seriesinfo: Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04
+        seriesinfo: 
+          DOI: Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04
         date: 28 January 2024, Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04
         target: https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html
       Chrony-project:
