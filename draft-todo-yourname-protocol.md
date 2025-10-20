@@ -50,7 +50,7 @@ author:
 normative:
 
 informative:
-[I-D.draft-ietf-ntp-ntpv5] Lichvar, M. and T. Mizrahi, "Network Time Protocol Version 5", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-06, 10 September 2025, <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06>. 
+[^1] Lichvar, M. and T. Mizrahi, "Network Time Protocol Version 5", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-06, 10 September 2025, . 
 
 
 
