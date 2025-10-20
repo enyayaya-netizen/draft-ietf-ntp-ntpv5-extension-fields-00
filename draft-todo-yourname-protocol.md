@@ -51,7 +51,13 @@ normative:
 
 informative:
 
-...
+ [I-D.draft-ietf-ntp-ntpv5]	Lichvar, M. and T. Mizrahi, "Network Time Protocol Version 5", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-06, 10 September 2025, <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06>. 
+[RFC5905] Mills, D., Martin, J., Ed., Burbank, J., and W. Kasch, "Network Time Protocol Version 4: Protocol and Algorithms Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010, <https://www.rfc-editor.org/rfc/rfc5905>.
+
+[draft-ietf-ntp-ntpv5-requirements-04]	J. Gruessing, "NTPv5 Use Cases and Requirements", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04, 28 January 2024, < https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html>.
+
+[Chrony-project] “The Chrony Project”, n.d., <https://chrony-project.org/index.html>. 
+
 
 --- abstract
 This document describes an alternative timestamp to the Monotonic Receive Timestamp Extension Field defined in NTP version 5 (NTPv5) when transferring frequency offset. The new extension field, named Monotonic RAW Receive Timestamp Extension Field uses a stable clock source that is not affected by NTP adjustment. It provides more accurate frequency-transfer offset between a remote server and local client, which further enhances the accuracy of time synchronization.
