@@ -48,9 +48,9 @@ author:
     organization: Huawei Technologies
     email: siyutang@huawei.com
  -
-    fullname: Second Author
-    organization: Second Organization
-    email: second@example.com
+    fullname: Guanhua Zhuang
+    organization: Huawei Technologies
+    email: zhuangguanhua@huawei.com
 
     
 informative:
