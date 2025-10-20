@@ -46,6 +46,9 @@ author:
     fullname: Siyu Tang
     organization: Huawei Technologies
     email: siyutang@huawei.com
+    fullname: Guanhua Zhuang
+    organization: Huawei Technologies
+    email: zhuangguanhua@huawei.com
 
 normative:
 
