@@ -148,7 +148,7 @@ Table of Contents
    during a certain amount of time.  The clock rate used to measure the
    Monotonic Receive Timestamp remains unchanged if the system clock is
    stepped, but is subject to changes if the clock is slewed, see
-   Table 1.
+   Figure 1.
 
                    +=====================+======+======+
                    | ClockID in Linux    | STEP | SLEW |
@@ -228,6 +228,14 @@ Table of Contents
    relative to the primary server.  The absolute frequency-transfer
    offset relative to the primary server is carried by the remaining
    31-bit.
+
+   |0| 1| 2| |3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7
+   8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
+   Type=[[TBD]] (draft 0xF508) | Length | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |s| Frequency To The Root
+   Server (31) |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
    |0| 1| 2| |3
    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
