@@ -111,6 +111,18 @@ The Monotonic Raw Transmit Timestamp Extension Field is included to identify lin
 In NTPv5, the frequency-transfer offset is computed as the offset of a client relative to its immediate preceding server. A client is able to synchronize with the primary server (i.e., the root server) only if its preceding server has synchronized its frequency with the primary server. The Frequency To The Root Server Extension Field is an optional field that can be used to expedite the convergence speed when synchronizing time. 
 The Frequency To The Root Server Extension Field contains the frequency-transfer offset of a client relative to the Realtime clock of the primary server. This extension field has a fixed length of 12 octets. The 1-bit sign bit is a binary number indicates if the frequency of a client is faster (1) or slower (0) relative to the primary server. The absolute frequency-transfer offset relative to the primary server is carried by the remaining 31-bit.
 
+0                     1                     2                     3                  
+01234567890123456789012345678901 
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Type=[[TBD]] (draft 0xF508)     |         Length                 |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|s|               Frequency To The Root Server (31)                |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Figure 2 Format of a Frequency To The Root Server Extension Field.
+
+Assume a multi-hop scenario with n stratum levels. The primary server determines the frequency offset between the Realtime clock and the Monotonic Raw clock, and include this value into the Frequency To The Root Server Extension Field. The frequency-transfer offset of a server at stratum level i (2<i<=n) relative to its immediate preceding server is determined using the Monotonic Raw Receive Timestamp Extension Field (or with the Monotonic Receive Timestamp Extension Field if the clock is stepped). When receiving an NTP message, a server at stratum level i (2<i<=n) reads the Frequency To The Root Server Extension Field, and adds the frequency-transfer offset that it computed locally to the existing value. This way, the frequency-transfer offset of a server relative to the primary server is captured and passed down to the succeeding nodes.
+
+For simplicity, assume that all nodes (other than the primary server) have successfully learnt their frequency-transfer offset relative to the preceding server at time t_k. Without the Frequency To The Root Server Extension Field, synchronization of a server to the primary server happens sequentially in time, i.e., a server with stratum level i needs to wait for its immediate preceding server (with stratum level i-1) to complete the operation of setting frequency-transfer offset. Note the operation of setting frequency offset is decoupled with NTP message exchange. This can take longer for the server at the last stratum level to synchronize with the primary server. With the assist of the Frequency To The Root Server Extension Field, the frequency-transfer offset of a server relative to the primary server can be immediately passed down in an NTP message, allowing the succeeding nodes to synchronize their frequency relative to the primary server once receiving that message. 
 
 
 # Security Considerations
