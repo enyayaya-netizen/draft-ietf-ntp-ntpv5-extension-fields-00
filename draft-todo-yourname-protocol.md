@@ -19,7 +19,7 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "NTPv5 Timestamp Extension Field"
+title: "TODO - Your title"
 category: info
 
 docname: draft-todo-yourname-protocol-latest
