@@ -2,7 +2,7 @@
 
 
 
-NTP                                                            G. Zhuang
+NTP                                                              S. Tang
 Internet-Draft                                       Huawei Technologies
 Intended status: Informational                           20 October 2025
 Expires: 23 April 2026
@@ -150,13 +150,15 @@ Table of Contents
    stepped, but is subject to changes if the clock is slewed, see
    Figure 1.
 
-   +-----------------------------------------------------+ | ClockID |
-   STEP | SLEW | | in Linux | | |
-   +-----------------------------------------------------| |
-   CLOCk_REALTIME | YES | YES | | | | CLOCK_MONOTONIC | NO | YES | | | |
-   CLOCK_MONOTONIC_RAW | NO | NO |
-   +-----------------------------------------------------| Figure 1
-   Impact of NTP clock adjustment on clock rate/frequency.
+   +--------------------------------------------------------------------
+   -------------------------------------------------------+ | ClockID in
+   Linux | STEP | SLEW | +----------------------------------------------
+   ---------------------------------------------------------------------
+   --------| | CLOCk_REALTIME | YES | YES | | | | | CLOCK_MONOTONIC |
+   NO | YES | | | | | CLOCK_MONOTONIC_RAW | NO | NO | | +---------------
+   ---------------------------------------------------------------------
+   --------------------------------------|
+   Figure 1 Impact of NTP clock adjustment on clock rate/frequency.
 
    In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-
    requirements-04], it is recommended to adopt a linear and monotonic
@@ -356,6 +358,6 @@ Table of Contents
 
 Author's Address
 
-   Guanhua Zhuang
+   Siyu Tang
    Huawei Technologies
-   Email: zhuangguanhua@huawei.com
+   Email: siyutang@huawei.com

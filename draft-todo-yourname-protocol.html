@@ -5,7 +5,7 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>NTPv5 Timestamp Extension Field</title>
-<meta content="Guanhua Zhuang" name="author">
+<meta content="Siyu Tang" name="author">
 <meta content="
        This document describes an alternative timestamp to the Monotonic Receive Timestamp Extension Field defined in NTP version 5 (NTPv5) when transferring frequency offset. The new extension field, named Monotonic RAW Receive Timestamp Extension Field uses a stable clock source that is not affected by NTP adjustment. It provides more accurate frequency-transfer offset between a remote server and local client, which further enhances the accuracy of time synchronization. 
     " name="description">
@@ -1048,7 +1048,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">October 2025</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Zhuang</td>
+<td class="left">Tang</td>
 <td class="center">Expires 23 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1071,7 +1071,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
-      <div class="author-name">G. Zhuang</div>
+      <div class="author-name">S. Tang</div>
 <div class="org">Huawei Technologies</div>
 </div>
 </dd>
@@ -1238,16 +1238,15 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-monotonic-receive-timestamp" class="section-name selfRef">Monotonic Receive Timestamp Extension Field in NTPv5</a>
       </h2>
 <p id="section-3-1">The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) [RFC5905], the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">+-----------------------------------------------------+
-| ClockID              |    STEP   |    SLEW          |
-| in Linux             |           |                  |
-+-----------------------------------------------------|
-| CLOCk_REALTIME       |    YES    |     YES          |
-|                                                     |
-| CLOCK_MONOTONIC       |    NO     |     YES          |
-|                                                     |
-| CLOCK_MONOTONIC_RAW  |    NO     |     NO           |
-+-----------------------------------------------------|
+<p id="section-3-2">+---------------------------------------------------------------------------------------------------------------------------+
+| ClockID   in Linux                           |    STEP                           |    SLEW                                |
++---------------------------------------------------------------------------------------------------------------------------|
+| CLOCk_REALTIME                               |    YES                            |     YES          |                     |
+|                                                                                                                           |
+| CLOCK_MONOTONIC                              |    NO                             |     YES          |                     |
+|                                                                                                                           |
+| CLOCK_MONOTONIC_RAW                          |    NO                             |     NO           |                     |
++--------------------------------------------------------------------------------------------------------------------------|                       <br>
 Figure 1 Impact of NTP clock adjustment on clock rate/frequency.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-requirements-04], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5.<a href="#section-3-3" class="pilcrow">¶</a></p>
 </section>
@@ -1364,11 +1363,11 @@ The client can carefully apply a filter algorithm to take out anomalies on T2_ra
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Guanhua Zhuang</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Siyu Tang</span></div>
 <div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:zhuangguanhua@huawei.com" class="email">zhuangguanhua@huawei.com</a>
+<a href="mailto:siyutang@huawei.com" class="email">siyutang@huawei.com</a>
 </div>
 </address>
 </section>
