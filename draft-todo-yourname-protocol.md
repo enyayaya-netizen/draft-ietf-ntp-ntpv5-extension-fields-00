@@ -44,9 +44,9 @@ venue:
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: Siyu Tang
+    organization: Huawei Technologies
+    email: siyutang@huawei.com
 
 normative:
 
