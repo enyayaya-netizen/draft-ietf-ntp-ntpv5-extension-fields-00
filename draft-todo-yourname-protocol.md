@@ -43,8 +43,8 @@ venue:
   latest: https://example.com/LATEST
 
 author:
- -Siyu Tang^[Huawei Technologies, siyutang@huawei.com]
- -Guanhua Zhuang^[Huawei Technologies, zhuangguanhua@huawei.com]
+ -Siyu Tang, Huawei Technologies, siyutang@huawei.com
+ -Guanhua Zhuang, Huawei Technologies, zhuangguanhua@huawei.com
 
 normative:
 
