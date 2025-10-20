@@ -49,7 +49,7 @@ author:
     email: siyutang@huawei.com
 
 informative:
-
+[I-D.draft-ietf-ntp-ntpv5]	Lichvar, M. and T. Mizrahi, "Network Time Protocol Version 5", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-06
 
 
 
