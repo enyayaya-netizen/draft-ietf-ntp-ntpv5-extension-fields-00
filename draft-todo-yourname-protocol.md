@@ -49,22 +49,16 @@ author:
     email: siyutang@huawei.com
 
 informative:
-    <references title="Informative References">
-        <!-- A reference written by by an organization not a persoN. -->
-        <reference
-            anchor="DOMINATION" >
-            <front>
-                <title>Ultimate Plan for Taking Over the World</title>
-                <author>
-                    <organization>Mad Dominators, Inc.</organization>
-                </author>
-                <date year="1984" />
-            </front>
-        </reference>
-        &RFC4234;
-        &RFC2234;
-    </references>
 
+```XML
+<references>
+	<reference>
+	</reference>
+	...
+	<reference>
+	</reference>
+</references>
+```
 
 
 
