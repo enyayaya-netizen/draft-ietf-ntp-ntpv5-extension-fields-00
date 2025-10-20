@@ -75,6 +75,7 @@ informative:
         title: "NTP Version 5 use cases and requirements"
         author:
           - ins: J. Gruessing
+        seriesinfo: Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04
         date: 28 January 2024, Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04
         target: https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html
       Chrony-project:
