@@ -87,9 +87,10 @@ The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a differen
 
 | CClockID in Linux       | STEP          | SLEW     |
 | ----------------------- | ------------- |-------------- |
-|CLOCk_REALTIME  | Cell 2, Row 1 | Cell 2, Row 1 |
-| Cell 1, Row 2 | Cell 1, Row 2 | Cell 1, Row 2 |
-| Cell 1, Row 2 | Cell 1, Row 2 | Cell 1, Row 2 |
+|CLOCk_REALTIME  | YES| YES |
+|CLOCK_MONOTONIC | NO | YES |
+|CLOCK_MONOTONIC_RAW | NO | NO |  
+Impact of NTP clock adjustment on clock rate/frequency.
 
 
 | ClockID in Linux    | STEP     |  SLEW   | 
