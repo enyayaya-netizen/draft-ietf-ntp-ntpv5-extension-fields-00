@@ -2,7 +2,7 @@
 
 
 
-NTP                                                      S. T. G. Zhuang
+NTP                                                            G. Zhuang
 Internet-Draft                                       Huawei Technologies
 Intended status: Informational                           20 October 2025
 Expires: 23 April 2026
@@ -133,6 +133,6 @@ Acknowledgments
 
 Author's Address
 
-   Siyu Tang, Guanhua Zhuang
+   Guanhua Zhuang
    Huawei Technologies
-   Email: siyutang@huawei.com, zhuangguanhua@huawei.com
+   Email: zhuangguanhua@huawei.com
