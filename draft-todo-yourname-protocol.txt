@@ -4,8 +4,9 @@
 
 NTP                                                              S. Tang
 Internet-Draft                                       Huawei Technologies
-Intended status: Informational                           20 October 2025
-Expires: 23 April 2026
+Intended status: Informational                                 S. Author
+Expires: 23 April 2026                               Second Organization
+                                                         20 October 2025
 
 
                     NTPv5 Timestamp Extension Field
@@ -87,7 +88,7 @@ Table of Contents
    6.  Security Considerations
    7.  IANA Considerations
    8.  Normative References
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -355,8 +356,13 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-Author's Address
+Authors' Addresses
 
    Siyu Tang
    Huawei Technologies
    Email: siyutang@huawei.com
+
+
+   Second Author
+   Second Organization
+   Email: second@example.com
