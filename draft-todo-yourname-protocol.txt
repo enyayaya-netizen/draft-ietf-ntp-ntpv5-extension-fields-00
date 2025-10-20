@@ -166,18 +166,18 @@ Table of Contents
 
    Figure 1 — Impact of NTP clock adjustment on clock rate/frequency.
 
-   In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-
-   requirements-04], it is recommended to adopt a linear and monotonic
-   timescale when communicating time between a number of computers.
-   Stepping a clock may cause the system time to jump backward, making
-   the timescale non-monotonic.  When the system clock is slewed, the
-   rate of the monotonic clock source moves at the same speed as the
-   system clock.  The frequency-transfer offset can no longer reflect
-   the rate of the crystal, thus, introducing errors in frequency
-   transfer.  In a multi-hop scenario, this effect can be amplified over
-   a number of hops.  In some scenarios, it can increase time errors
-   when synchronizing time, sometimes, result in a system that fails to
-   converge, see Section 5.
+   In NTPv5 Use Cases and Requirements
+   [I-D.ietf-ntp-ntpv5-requirements], it is recommended to adopt a
+   linear and monotonic timescale when communicating time between a
+   number of computers.  Stepping a clock may cause the system time to
+   jump backward, making the timescale non-monotonic.  When the system
+   clock is slewed, the rate of the monotonic clock source moves at the
+   same speed as the system clock.  The frequency-transfer offset can no
+   longer reflect the rate of the crystal, thus, introducing errors in
+   frequency transfer.  In a multi-hop scenario, this effect can be
+   amplified over a number of hops.  In some scenarios, it can increase
+   time errors when synchronizing time, sometimes, result in a system
+   that fails to converge, see Section 5.
 
 4.  Monotonic RAW Timestamp Extension Fields
 
@@ -359,6 +359,11 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
+   [RFC5905]  Mills, D. and Others, "Network Time Protocol Version 4:
+              Protocol and Algorithms Specification", RFC 5905,
+              DOI 10.17487/RFC5905, 2010,
+              <https://www.rfc-editor.org/rfc/rfc5905>.
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
@@ -366,20 +371,18 @@ Table of Contents
 8.2.  Informative References
 
    [Chrony-project]
-              "Chrony 4.7", 2023, <https://chrony.tuxfamily.org/>.
+              "Chrony 4.7", October 2025, <https://chrony-project.org>.
 
    [I-D.draft-ietf-ntp-ntpv5]
-              Franke, D. and Others, "Network Time Protocol Version 5",
-              October 2025.
+              Lichvar, M. and T. Mizrahi, "Network Time Protocol Version
+              5", September 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-
+              ntpv5-06>.
 
    [I-D.ietf-ntp-ntpv5-requirements]
-              O'Donoghue, K. and Others, "NTP Version 5 use cases and
-              requirements", October 2025.
-
-   [RFC5905]  Mills, D. and Others, "Network Time Protocol Version 4:
-              Protocol and Algorithms Specification", RFC 5905,
-              DOI 10.17487/RFC5905, 2010,
-              <https://www.rfc-editor.org/rfc/rfc5905>.
+              Gruessing, J., "NTP Version 5 use cases and requirements",
+              January 2024, <https://www.ietf.org/archive/id/draft-ietf-
+              ntp-ntpv5-requirements-04.html>.
 
 Authors' Addresses
 

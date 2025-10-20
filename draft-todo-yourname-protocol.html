@@ -1279,7 +1279,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         </tbody>
       </table>
 <p id="section-3-3">Figure 1 — Impact of NTP clock adjustment on clock rate/frequency.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-requirements-04], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-4">In NTPv5 Use Cases and Requirements <span>[<a href="#I-D.ietf-ntp-ntpv5-requirements" class="cite xref">I-D.ietf-ntp-ntpv5-requirements</a>]</span>, it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5.<a href="#section-3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="monotonic-raw-timestamp-extension-fields">
@@ -1385,6 +1385,10 @@ The client can carefully apply a filter algorithm to take out anomalies on T2_ra
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC5905">[RFC5905]</dt>
+        <dd>
+<span class="refAuthor">Mills, D.</span> and <span class="refAuthor">Others</span>, <span class="refTitle">"Network Time Protocol Version 4: Protocol and Algorithms Specification"</span>, <span class="seriesInfo">RFC 5905</span>, <span class="seriesInfo">DOI 10.17487/RFC5905</span>, <time datetime="2010" class="refDate">2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5905">https://www.rfc-editor.org/rfc/rfc5905</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
       <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
@@ -1400,19 +1404,15 @@ The client can carefully apply a filter algorithm to take out anomalies on T2_ra
 <dl class="references">
 <dt id="Chrony-project">[Chrony-project]</dt>
         <dd>
-<span class="refTitle">"Chrony 4.7"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://chrony.tuxfamily.org/">https://chrony.tuxfamily.org/</a>&gt;</span>. </dd>
+<span class="refTitle">"Chrony 4.7"</span>, <time datetime="2025-10" class="refDate">October 2025</time>, <span>&lt;<a href="https://chrony-project.org">https://chrony-project.org</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.draft-ietf-ntp-ntpv5">[I-D.draft-ietf-ntp-ntpv5]</dt>
         <dd>
-<span class="refAuthor">Franke, D.</span> and <span class="refAuthor">Others</span>, <span class="refTitle">"Network Time Protocol Version 5"</span>, <time datetime="2025-10" class="refDate">October 2025</time>. </dd>
+<span class="refAuthor">Lichvar, M.</span> and <span class="refAuthor">T. Mizrahi</span>, <span class="refTitle">"Network Time Protocol Version 5"</span>, <time datetime="2025-09" class="refDate">September 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06">https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-ntp-ntpv5-requirements">[I-D.ietf-ntp-ntpv5-requirements]</dt>
-        <dd>
-<span class="refAuthor">O'Donoghue, K.</span> and <span class="refAuthor">Others</span>, <span class="refTitle">"NTP Version 5 use cases and requirements"</span>, <time datetime="2025-10" class="refDate">October 2025</time>. </dd>
-<dd class="break"></dd>
-<dt id="RFC5905">[RFC5905]</dt>
       <dd>
-<span class="refAuthor">Mills, D.</span> and <span class="refAuthor">Others</span>, <span class="refTitle">"Network Time Protocol Version 4: Protocol and Algorithms Specification"</span>, <span class="seriesInfo">RFC 5905</span>, <span class="seriesInfo">DOI 10.17487/RFC5905</span>, <time datetime="2010" class="refDate">2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5905">https://www.rfc-editor.org/rfc/rfc5905</a>&gt;</span>. </dd>
+<span class="refAuthor">Gruessing, J.</span>, <span class="refTitle">"NTP Version 5 use cases and requirements"</span>, <time datetime="2024-01" class="refDate">January 2024</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html">https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
