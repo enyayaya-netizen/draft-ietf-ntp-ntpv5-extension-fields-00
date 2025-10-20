@@ -49,7 +49,22 @@ author:
     email: siyutang@huawei.com
 
 informative:
-[I-D.draft-ietf-ntp-ntpv5]	Lichvar, M. and T. Mizrahi, "Network Time Protocol Version 5", Work in Progress, Internet-Draft, draft-ietf-ntp-ntpv5-06
+    <references title="Informative References">
+        <!-- A reference written by by an organization not a persoN. -->
+        <reference
+            anchor="DOMINATION" >
+            <front>
+                <title>Ultimate Plan for Taking Over the World</title>
+                <author>
+                    <organization>Mad Dominators, Inc.</organization>
+                </author>
+                <date year="1984" />
+            </front>
+        </reference>
+        &RFC4234;
+        &RFC2234;
+    </references>
+
 
 
 
