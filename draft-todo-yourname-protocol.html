@@ -1169,19 +1169,30 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-implementing-the-frequency-" class="internal xref">Implementing the frequency transfer function with different timestamps</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-frequency-transfer-function" class="internal xref">Frequency transfer function assisted with the Monotonic Raw Receive Timestamp Extension Field</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-frequency-transfer-function-" class="internal xref">Frequency transfer function assisted with the Monotonic Raw Transmit Timestamp Extension Field</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1277,26 +1288,54 @@ Figure 2 Format of a Frequency To The Root Server Extension Field.<a href="#sect
 </div>
 </section>
 </div>
-<div id="security-considerations">
+<div id="implementing-the-frequency-transfer-function-with-different-timestamps">
 <section id="section-5">
-      <h2 id="name-security-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-implementing-the-frequency-">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-implementing-the-frequency-" class="section-name selfRef">Implementing the frequency transfer function with different timestamps</a>
       </h2>
-<p id="section-5-1">As this document is intended to create discussion and consensus, it introduces no security considerations of its own.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">## Frequency transfer function assisted with the Monotonic Receive Timestamp Extension Field
+NTPv5 does not disclose details on an algorithm that assist the implementation of the frequency transfer function in conjunction with the Monotonic Receive Timestamp Extension Field. One feasible implementation is to subtract the difference between two consecutive Monotonic Receive Timestamps from the difference between two consecutive Receive timestamps. This gives us the amount of correction that to be applied to the time-transfer offset. Once the time-transfer offset is corrected, the frequency-transfer offset can be derived using techniques such as linear regression from a number of time-transfer offset samples. When the system clock is stepped, the monotonic clock rate is unaffected. The above function will truthfully recover the frequency-transfer offset from a set of measurement samples. If the system clock is slewed, a client can note down the change of frequency over a certain amount of time. This allows the client to compensate the frequency change caused by clock slew. However, the Monotonic Receive Timestamp Extension Field is not able to recover the amount of slewed frequency in the remote server. This introduces errors while estimating the frequency-transfer offset. 
+To the knowledge of the author, Chrony 4.7 release [Chrony-project] is the only open source implementation of the Monotonic Receive Timestamp extension field and the frequency transfer function defined in NTPv5. The performance of Chrony 4.7 in terms of frequency-transfer offset estimation would encounter the same issue if the system clock is slewed. In a multi-hop scenario, the frequency-transfer offset between a server and client pair may not converge. This will negatively impact the synchronization accuracy of following nodes.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="frequency-transfer-function-assisted-with-the-monotonic-raw-receive-timestamp-extension-field">
+<section id="section-5.1">
+        <h3 id="name-frequency-transfer-function">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-frequency-transfer-function" class="section-name selfRef">Frequency transfer function assisted with the Monotonic Raw Receive Timestamp Extension Field</a>
+        </h3>
+<p id="section-5.1-1">One approach to determine the frequency-transfer offset with the Monotonic Raw Timestamp Extension Field is at a client is to obtain the amount of offset correction that needs to be applied to the time-transfer offset. This can be done by subtracting the difference between two consecutively Monotonic Raw receive timestamps in the response from the difference between two consecutively Realtime timestamps. The frequency-transfer offset shall be estimated using techniques such as linear regression from a number of corrected time-transfer offset samples. Since the Monotonic Raw receive timestamps is not affected by NTP adjustment. No additional error is introduced if clock is slewed. 
+Alternatively, a client can choose to determine the difference between the Monotonic Raw Receive Timestamps (T2_raw) in the extension field and the Monotonic Raw Original Timestamps (T1_raw) maintained locally at the client. The frequency-transfer offset can be derived with a number of computed samples using techniques such as linear regression, etc.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="frequency-transfer-function-assisted-with-the-monotonic-raw-transmit-timestamp-extension-field">
+<section id="section-5.2">
+        <h3 id="name-frequency-transfer-function-">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-frequency-transfer-function-" class="section-name selfRef">Frequency transfer function assisted with the Monotonic Raw Transmit Timestamp Extension Field</a>
+        </h3>
+<p id="section-5.2-1">The Monotonic Raw Transmit Timestamp Extension Field should always be used together with the Monotonic Raw Receive Timestamp Extension Field to enable bi-directional measurement. In case of link asymmetry, the forward and backward paths would experience different delay/jitter. Thus, T2_rwaw-T1_raw demonstrates distinct different behavior than T3_raw-T4_raw, i.e., difference between the Monotonic Raw Transmit Timestamps (T3_raw) in the extension field and the Monotonic Raw Destination Timestamps (T4_raw) at the client. 
+The client can carefully apply a filter algorithm to take out anomalies on T2_raw-T1_raw and T3_raw-T4_raw respectively. Averaging over T’2_raw-T’1_raw and T’3_raw-T’4_raw gives us the offset and delay of the monotonic raw clock of a client relative to the server. the superscript ’ denotes data samples that are left after applying the filtering mechanism(s). The slope of the delay (or offset) derived from the monotonic raw timestamps would more truthfully reflect the true frequency-transfer offset between a server and client.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-6">
+      <h2 id="name-security-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-6-1">As this document is intended to create discussion and consensus, it introduces no security considerations of its own.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-6">
+<section id="section-7">
       <h2 id="name-iana-considerations">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-6-1">This document has no IANA actions.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">This document has no IANA actions.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-normative-references">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-normative-references">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>

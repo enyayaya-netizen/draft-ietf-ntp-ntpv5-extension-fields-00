@@ -77,9 +77,15 @@ Table of Contents
      4.1.  Monotonic Raw Receive Timestamp Extension Field
      4.2.  Monotonic Raw Transmit Timestamp Extension Field
      4.3.  Frequency to The Root Server Extension Field
-   5.  Security Considerations
-   6.  IANA Considerations
-   7.  Normative References
+   5.  Implementing the frequency transfer function with different
+           timestamps
+     5.1.  Frequency transfer function assisted with the Monotonic Raw
+           Receive Timestamp Extension Field
+     5.2.  Frequency transfer function assisted with the Monotonic Raw
+           Transmit Timestamp Extension Field
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  Normative References
    Acknowledgments
    Author's Address
 
@@ -254,16 +260,88 @@ Table of Contents
    message, allowing the succeeding nodes to synchronize their frequency
    relative to the primary server once receiving that message.
 
-5.  Security Considerations
+5.  Implementing the frequency transfer function with different
+    timestamps
+
+   ## Frequency transfer function assisted with the Monotonic Receive
+   Timestamp Extension Field NTPv5 does not disclose details on an
+   algorithm that assist the implementation of the frequency transfer
+   function in conjunction with the Monotonic Receive Timestamp
+   Extension Field.  One feasible implementation is to subtract the
+   difference between two consecutive Monotonic Receive Timestamps from
+   the difference between two consecutive Receive timestamps.  This
+   gives us the amount of correction that to be applied to the time-
+   transfer offset.  Once the time-transfer offset is corrected, the
+   frequency-transfer offset can be derived using techniques such as
+   linear regression from a number of time-transfer offset samples.
+   When the system clock is stepped, the monotonic clock rate is
+   unaffected.  The above function will truthfully recover the
+   frequency-transfer offset from a set of measurement samples.  If the
+   system clock is slewed, a client can note down the change of
+   frequency over a certain amount of time.  This allows the client to
+   compensate the frequency change caused by clock slew.  However, the
+   Monotonic Receive Timestamp Extension Field is not able to recover
+   the amount of slewed frequency in the remote server.  This introduces
+   errors while estimating the frequency-transfer offset.  To the
+   knowledge of the author, Chrony 4.7 release [Chrony-project] is the
+   only open source implementation of the Monotonic Receive Timestamp
+   extension field and the frequency transfer function defined in NTPv5.
+   The performance of Chrony 4.7 in terms of frequency-transfer offset
+   estimation would encounter the same issue if the system clock is
+   slewed.  In a multi-hop scenario, the frequency-transfer offset
+   between a server and client pair may not converge.  This will
+   negatively impact the synchronization accuracy of following nodes.
+
+5.1.  Frequency transfer function assisted with the Monotonic Raw
+      Receive Timestamp Extension Field
+
+   One approach to determine the frequency-transfer offset with the
+   Monotonic Raw Timestamp Extension Field is at a client is to obtain
+   the amount of offset correction that needs to be applied to the time-
+   transfer offset.  This can be done by subtracting the difference
+   between two consecutively Monotonic Raw receive timestamps in the
+   response from the difference between two consecutively Realtime
+   timestamps.  The frequency-transfer offset shall be estimated using
+   techniques such as linear regression from a number of corrected time-
+   transfer offset samples.  Since the Monotonic Raw receive timestamps
+   is not affected by NTP adjustment.  No additional error is introduced
+   if clock is slewed.  Alternatively, a client can choose to determine
+   the difference between the Monotonic Raw Receive Timestamps (T2_raw)
+   in the extension field and the Monotonic Raw Original Timestamps
+   (T1_raw) maintained locally at the client.  The frequency-transfer
+   offset can be derived with a number of computed samples using
+   techniques such as linear regression, etc.
+
+5.2.  Frequency transfer function assisted with the Monotonic Raw
+      Transmit Timestamp Extension Field
+
+   The Monotonic Raw Transmit Timestamp Extension Field should always be
+   used together with the Monotonic Raw Receive Timestamp Extension
+   Field to enable bi-directional measurement.  In case of link
+   asymmetry, the forward and backward paths would experience different
+   delay/jitter.  Thus, T2_rwaw-T1_raw demonstrates distinct different
+   behavior than T3_raw-T4_raw, i.e., difference between the Monotonic
+   Raw Transmit Timestamps (T3_raw) in the extension field and the
+   Monotonic Raw Destination Timestamps (T4_raw) at the client.  The
+   client can carefully apply a filter algorithm to take out anomalies
+   on T2_raw-T1_raw and T3_raw-T4_raw respectively.  Averaging over
+   T’2_raw-T’1_raw and T’3_raw-T’4_raw gives us the offset and delay of
+   the monotonic raw clock of a client relative to the server. the
+   superscript ’ denotes data samples that are left after applying the
+   filtering mechanism(s).  The slope of the delay (or offset) derived
+   from the monotonic raw timestamps would more truthfully reflect the
+   true frequency-transfer offset between a server and client.
+
+6.  Security Considerations
 
    As this document is intended to create discussion and consensus, it
    introduces no security considerations of its own.
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    This document has no IANA actions.
 
-7.  Normative References
+8.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
