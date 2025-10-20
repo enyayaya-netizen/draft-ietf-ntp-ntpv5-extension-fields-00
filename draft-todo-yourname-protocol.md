@@ -55,10 +55,31 @@ author:
 
     
 informative:
-    - I-D.draft-ietf-ntp-ntpv5
-    - draft-ietf-ntp-ntpv5-requirements-04
-    - RFC5905
-    - Chrony-project
+      I-D.draft-ietf-ntp-ntpv5:
+        title: "Network Time Protocol Version 5"
+        author:
+          - ins: D. Franke
+          - ins: Others
+        date: latest
+      RFC5905:
+        title: "Network Time Protocol Version 4: Protocol and Algorithms Specification"
+        author:
+          - ins: D. Mills
+          - ins: Others
+        date: 2010
+        seriesinfo:
+          RFC: 5905
+          DOI: 10.17487/RFC5905
+      I-D.ietf-ntp-ntpv5-requirements:
+        title: "NTP Version 5 use cases and requirements"
+        author:
+          - ins: K. O'Donoghue
+          - ins: Others
+        date: latest
+      Chrony-project:
+        title: "Chrony 4.7"
+        target: https://chrony.tuxfamily.org/
+        date: 2023
 
 
 
