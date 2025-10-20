@@ -229,6 +229,16 @@ Table of Contents
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    Figure 2 Format of a Frequency To The Root Server Extension Field.
 
+                     +===============+===============+
+                     | Column 1      | Column 2      |
+                     +===============+===============+
+                     | Cell 1, Row 1 | Cell 2, Row 1 |
+                     +---------------+---------------+
+                     | Cell 1, Row 2 | Cell 1, Row 2 |
+                     +---------------+---------------+
+
+                                  Table 1
+
    Assume a multi-hop scenario with n stratum levels.  The primary
    server determines the frequency offset between the Realtime clock and
    the Monotonic Raw clock, and include this value into the Frequency To
