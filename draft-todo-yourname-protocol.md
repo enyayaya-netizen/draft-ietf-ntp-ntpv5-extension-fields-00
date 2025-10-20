@@ -50,16 +50,7 @@ author:
 normative:
 
 informative:
-@article{smith2024performance,
-  title={Advanced Markdown Processing Techniques},
-  author={Smith, John A and Johnson, Mary B},
-  journal={Journal of Documentation Science},
-  volume={12},
-  number={4},
-  pages={234--248},
-  year={2024},
-  publisher={Academic Press}
-}
+[^1]: Reference details go here, such as the author, title, and publication year.
 
 
 
