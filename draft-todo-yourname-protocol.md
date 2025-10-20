@@ -50,15 +50,6 @@ author:
 
 informative:
 
-```XML
-<references>
-	<reference>
-	</reference>
-	...
-	<reference>
-	</reference>
-</references>
-```
 
 
 
