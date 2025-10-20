@@ -138,6 +138,14 @@ Table of Contents
    stepped, but is subject to changes if the clock is slewed, see
    Figure 1.
 
+   +-----------------------------------------------------+ | ClockID |
+   STEP | SLEW | | in Linux | | |
+   +-----------------------------------------------------| |
+   CLOCk_REALTIME | YES | YES | | | | CLOCK_MONOTONIC | NO | YES | | | |
+   CLOCK_MONOTONIC_RAW | NO | NO |
+   +-----------------------------------------------------| Figure 1
+   Impact of NTP clock adjustment on clock rate/frequency.
+
 4.  Security Considerations
 
    As this document is intended to create discussion and consensus, it
