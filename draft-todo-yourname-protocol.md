@@ -52,15 +52,7 @@ author:
     organization: Huawei Technologies
     email: zhuangguanhua@huawei.com
 
-
-    
-informative:
-      I-D.draft-ietf-ntp-ntpv5:
-        title: "Network Time Protocol Version 5"
-        author:
-          - ins: D. Franke
-          - ins: Others
-        date: latest
+normative:
       RFC5905:
         title: "Network Time Protocol Version 4: Protocol and Algorithms Specification"
         author:
@@ -69,17 +61,25 @@ informative:
         date: 2010
         seriesinfo:
           RFC: 5905
-          DOI: 10.17487/RFC5905
+          DOI: 10.17487/RFC5905    
+informative:
+      I-D.draft-ietf-ntp-ntpv5:
+        title: "Network Time Protocol Version 5"
+        author:
+          - ins: M. Lichvar
+          - ins: T. Mizrahi
+        date: 10 September 2025
+        target: https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06
       I-D.ietf-ntp-ntpv5-requirements:
         title: "NTP Version 5 use cases and requirements"
         author:
-          - ins: K. O'Donoghue
-          - ins: Others
-        date: latest
+          - ins: J. Gruessing
+        date: 28 January 2024, Internet-Draft, draft-ietf-ntp-ntpv5-requirements-04
+        target: https://www.ietf.org/archive/id/draft-ietf-ntp-ntpv5-requirements-04.html
       Chrony-project:
         title: "Chrony 4.7"
-        target: https://chrony.tuxfamily.org/
-        date: 2023
+        target: https://chrony-project.org
+        date: n.d.
 
 
 
@@ -122,7 +122,7 @@ The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a differen
 
 Figure 1 — Impact of NTP clock adjustment on clock rate/frequency.                  
 
-In NTPv5 Use Cases and Requirements [draft-ietf-ntp-ntpv5-requirements-04], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5. 
+In NTPv5 Use Cases and Requirements [I-D.ietf-ntp-ntpv5-requirements], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5. 
 
 # Monotonic RAW Timestamp Extension Fields
 In the Linux system, CLOCK_MONOTONIC_RAW is a clock source that is not subject to NTP adjustment, despite stepping or slewing a clock, see Figure 1. It provides a stable source to calculate the frequency-transfer offset and reduces the error that has been introduced using the Monotonic Receive Timestamp extension field. 
