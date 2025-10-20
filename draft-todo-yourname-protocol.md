@@ -50,7 +50,7 @@ author:
 normative:
 
 informative:
-[^1]: Reference details go here, such as the author, title, and publication year.
+[^1]: Lichvar, M. and T. Mizrahi, Network Time Protocol Version 5.
 
 
 
