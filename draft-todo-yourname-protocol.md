@@ -117,13 +117,18 @@ Monotonic Raw Destination Timestamps (raw_dst): Time of the monotonic raw clock 
 # Monotonic Receive Timestamp Extension Field in NTPv5
 
 The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) [RFC5905], the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1.
-
-| ClockID in Linux         | STEP | SLEW |
-|--------------------------|:----:|:----:|
-| CLOCK_REALTIME           | YES  | YES  |
-| CLOCK_MONOTONIC          | NO   | YES  |
-| CLOCK_MONOTONIC_RAW      | NO   | NO   |
-
+~~~text
++-----------------------------------------------------+
+| ClockID              |    STEP   |    SLEW          |
+| in Linux             |           |                  |
++-----------------------------------------------------|
+| CLOCk_REALTIME       |    YES    |     YES          |
+|                                                     |
+| CLOCK_MONOTONIC      |    NO     |     YES          |
+|                                                     |
+| CLOCK_MONOTONIC_RAW  |    NO     |     NO           |
++-----------------------------------------------------|
+~~~
 Figure 1 — Impact of NTP clock adjustment on clock rate/frequency.                  
 
 In NTPv5 Use Cases and Requirements [I-D.ietf-ntp-ntpv5-requirements], it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5. 
@@ -143,15 +148,6 @@ The Monotonic Raw Transmit Timestamp Extension Field is included to identify lin
 In NTPv5, the frequency-transfer offset is computed as the offset of a client relative to its immediate preceding server. A client is able to synchronize with the primary server (i.e., the root server) only if its preceding server has synchronized its frequency with the primary server. The Frequency To The Root Server Extension Field is an optional field that can be used to expedite the convergence speed when synchronizing time. 
 The Frequency To The Root Server Extension Field contains the frequency-transfer offset of a client relative to the Realtime clock of the primary server. This extension field has a fixed length of 12 octets. The 1-bit sign bit is a binary number indicates if the frequency of a client is faster (1) or slower (0) relative to the primary server. The absolute frequency-transfer offset relative to the primary server is carried by the remaining 31-bit.  
 
-0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+    
-|--Type=[[TBD]] (draft 0xF508)--|------------Length-----------|  
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+    
-|s|--------------Frequency To The Root Server (31)------------|  
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+    
-Figure 2 Format of a Frequency To The Root Server Extension Field.
-
-
 ~~~text
   0                   1                   2                   3
   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -163,7 +159,7 @@ Figure 2 Format of a Frequency To The Root Server Extension Field.
 .                                                               .
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~
-
+Figure 2 Format of a Frequency To The Root Server Extension Field.
 
 Assume a multi-hop scenario with n stratum levels. The primary server determines the frequency offset between the Realtime clock and the Monotonic Raw clock, and include this value into the Frequency To The Root Server Extension Field. The frequency-transfer offset of a server at stratum level i (2<i<=n) relative to its immediate preceding server is determined using the Monotonic Raw Receive Timestamp Extension Field (or with the Monotonic Receive Timestamp Extension Field if the clock is stepped). When receiving an NTP message, a server at stratum level i (2<i<=n) reads the Frequency To The Root Server Extension Field, and adds the frequency-transfer offset that it computed locally to the existing value. This way, the frequency-transfer offset of a server relative to the primary server is captured and passed down to the succeeding nodes.
 
