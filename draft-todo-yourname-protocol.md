@@ -152,7 +152,7 @@ The Frequency To The Root Server Extension Field contains the frequency-transfer
 Figure 2 Format of a Frequency To The Root Server Extension Field.
 
 
-| First cell|Second cell|Third cell
+| First cell|Second cell|Third cell |
 | First | Second | Third |
 
 First | Second | | Fourth |
