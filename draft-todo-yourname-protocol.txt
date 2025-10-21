@@ -5,7 +5,7 @@
 NTP                                                              S. Tang
 Internet-Draft                                                 G. Zhuang
 Intended status: Informational                       Huawei Technologies
-Expires: 23 April 2026                                   20 October 2025
+Expires: 24 April 2026                                   21 October 2025
 
 
                     NTPv5 Timestamp Extension Field
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 April 2026.
+   This Internet-Draft will expire on 24 April 2026.
 
 Copyright Notice
 
@@ -238,6 +238,8 @@ Table of Contents
    |s|--------------Frequency To The Root Server (31)------------|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    Figure 2 Format of a Frequency To The Root Server Extension Field.
+
+   |---+---+---| + :-: |:------| ---:| | :-: :- -: - :-: | :-
 
    Assume a multi-hop scenario with n stratum levels.  The primary
    server determines the frequency offset between the Realtime clock and
