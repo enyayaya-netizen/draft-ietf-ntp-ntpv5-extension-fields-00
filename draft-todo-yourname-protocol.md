@@ -123,7 +123,7 @@ The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a differen
 | ClockID              |    STEP   |    SLEW          |
 | in Linux             |           |                  |
 +-----------------------------------------------------|
-| CLOCk_REALTIME       |    YES    |     YES          |
+| CLOCK_REALTIME       |    YES    |     YES          |
 |                                                     |
 | CLOCK_MONOTONIC      |    NO     |     YES          |
 |                                                     |
