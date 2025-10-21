@@ -155,9 +155,7 @@ The Frequency To The Root Server Extension Field contains the frequency-transfer
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |             Type              |             Length            |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-.                                                               .
-.                           Data (variable)                     .
-.                                                               .
+|s|               Frequency To The Root Server (31)             |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~
 Figure 2 Format of a Frequency To The Root Server Extension Field.
