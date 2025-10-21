@@ -1250,8 +1250,9 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-monotonic-receive-timestamp">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-monotonic-receive-timestamp" class="section-name selfRef">Monotonic Receive Timestamp Extension Field in NTPv5</a>
       </h2>
-<p id="section-3-1">The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span>, the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1.
-~~~text
+<p id="section-3-1">The Monotonic Receive Timestamp Extension Field defined in NTPv5 uses a different clock to transfer frequency between client and server. In NTP version 4 (NTPv4) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span>, the clock discipline function defines two methods to adjust system clock, i.e., step and slew. In the step mode, the clock is stepped to the correct offset. In the slew mode, the clock rate is adjusted to achieve the desired offset during a certain amount of time. The clock rate used to measure the Monotonic Receive Timestamp remains unchanged if the system clock is stepped, but is subject to changes if the clock is slewed, see Figure 1.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<div class="lang-text sourcecode" id="section-3-2">
+<pre>
 +-----------------------------------------------------+
 | ClockID              |    STEP   |    SLEW          |
 | in Linux             |           |                  |
@@ -1262,9 +1263,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 |                                                     |
 | CLOCK_MONOTONIC_RAW  |    NO     |     NO           |
 +-----------------------------------------------------|
-~~~
-Figure 1 — Impact of NTP clock adjustment on clock rate/frequency.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">In NTPv5 Use Cases and Requirements <span>[<a href="#I-D.ietf-ntp-ntpv5-requirements" class="cite xref">I-D.ietf-ntp-ntpv5-requirements</a>]</span>, it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5.<a href="#section-3-2" class="pilcrow">¶</a></p>
+</pre><a href="#section-3-2" class="pilcrow">¶</a>
+</div>
+<p id="section-3-3">Figure 1 — Impact of NTP clock adjustment on clock rate/frequency.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">In NTPv5 Use Cases and Requirements <span>[<a href="#I-D.ietf-ntp-ntpv5-requirements" class="cite xref">I-D.ietf-ntp-ntpv5-requirements</a>]</span>, it is recommended to adopt a linear and monotonic timescale when communicating time between a number of computers. Stepping a clock may cause the system time to jump backward, making the timescale non-monotonic. When the system clock is slewed, the rate of the monotonic clock source moves at the same speed as the system clock. The frequency-transfer offset can no longer reflect the rate of the crystal, thus, introducing errors in frequency transfer. In a multi-hop scenario, this effect can be amplified over a number of hops. In some scenarios, it can increase time errors when synchronizing time, sometimes, result in a system that fails to converge, see Section 5.<a href="#section-3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="monotonic-raw-timestamp-extension-fields">
