@@ -5,11 +5,11 @@
 NTP                                                              S. Tang
 Internet-Draft                                                 G. Zhuang
 Intended status: Informational                       Huawei Technologies
-Expires: 24 April 2026                                   21 October 2025
+Expires: 25 April 2026                                   22 October 2025
 
 
                     NTPv5 Timestamp Extension Field
-           draft-ietf-ntp-ntpv5-timestamp-extension-field-00
+             draft-tang-ntpv5-timestamp-extension-field-00
 
 Abstract
 
@@ -27,7 +27,7 @@ About This Document
 
    The latest revision of this draft can be found at
    https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-ietf-ntp-ntpv5-
+   be found at https://datatracker.ietf.org/doc/draft-tang-ntpv5-
    timestamp-extension-field/.
 
    Discussion of this document takes place on the WG Working Group
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 April 2026.
+   This Internet-Draft will expire on 25 April 2026.
 
 Copyright Notice
 
