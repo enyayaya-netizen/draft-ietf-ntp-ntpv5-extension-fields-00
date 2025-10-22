@@ -22,7 +22,7 @@
 title: "NTPv5 Timestamp Extension Field"
 category: info
 
-docname: draft-ietf-ntp-ntpv5-timestamp-extension-field-00
+docname: draft-tang-ntpv5-timestamp-extension-field-00
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -31,9 +31,9 @@ v: 3
 area: INT
 workgroup: NTP
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - NTPv5
+ - Frequency transfer
+ - Extension field
 venue:
   group: WG
   type: Working Group
