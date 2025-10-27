@@ -5,7 +5,7 @@
 NTP                                                              S. Tang
 Internet-Draft                                                 G. Zhuang
 Intended status: Informational                       Huawei Technologies
-Expires: 25 April 2026                                   22 October 2025
+Expires: 30 April 2026                                   27 October 2025
 
 
                     NTPv5 Timestamp Extension Field
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2026.
+   This Internet-Draft will expire on 30 April 2026.
 
 Copyright Notice
 
@@ -75,20 +75,20 @@ Table of Contents
      2.1.  Terminology
    3.  Monotonic Receive Timestamp Extension Field in NTPv5
    4.  Monotonic RAW Timestamp Extension Fields
-     4.1.  Monotonic Raw Receive Timestamp Extension Field
-     4.2.  Monotonic Raw Transmit Timestamp Extension Field
-     4.3.  Frequency to The Root Server Extension Field
-   5.  Implementing the frequency transfer function with different
+   5.  Monotonic Raw Receive Timestamp Extension Field
+     5.1.  Monotonic Raw Transmit Timestamp Extension Field
+     5.2.  Frequency to The Root Server Extension Field
+   6.  Implementing the frequency transfer function with different
            timestamps
-     5.1.  Frequency transfer function assisted with the Monotonic Raw
+     6.1.  Frequency transfer function assisted with the Monotonic Raw
            Receive Timestamp Extension Field
-     5.2.  Frequency transfer function assisted with the Monotonic Raw
+     6.2.  Frequency transfer function assisted with the Monotonic Raw
            Transmit Timestamp Extension Field
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -186,7 +186,7 @@ Table of Contents
    frequency-transfer offset and reduces the error that has been
    introduced using the Monotonic Receive Timestamp extension field.
 
-4.1.  Monotonic Raw Receive Timestamp Extension Field
+5.  Monotonic Raw Receive Timestamp Extension Field
 
    An NTPv5 message contains multiple optional extension fields.  A
    Monotonic Raw Receive Timestamp Extension Field is recommended in
@@ -201,7 +201,7 @@ Table of Contents
    frequency-transfer function and further reduce synchronization time
    error.
 
-4.2.  Monotonic Raw Transmit Timestamp Extension Field
+5.1.  Monotonic Raw Transmit Timestamp Extension Field
 
    The Monotonic Raw Receive Timestamp Extension Field appears to be
    insufficient when dealing with asymmetric packet delay variation
@@ -213,7 +213,7 @@ Table of Contents
    Extension Field has the same format of the Monotonic Receive
    Timestamp Extension Field.
 
-4.3.  Frequency to The Root Server Extension Field
+5.2.  Frequency to The Root Server Extension Field
 
    In NTPv5, the frequency-transfer offset is computed as the offset of
    a client relative to its immediate preceding server.  A client is
@@ -270,7 +270,7 @@ Table of Contents
    message, allowing the succeeding nodes to synchronize their frequency
    relative to the primary server once receiving that message.
 
-5.  Implementing the frequency transfer function with different
+6.  Implementing the frequency transfer function with different
     timestamps
 
    ## Frequency transfer function assisted with the Monotonic Receive
@@ -302,7 +302,7 @@ Table of Contents
    between a server and client pair may not converge.  This will
    negatively impact the synchronization accuracy of following nodes.
 
-5.1.  Frequency transfer function assisted with the Monotonic Raw
+6.1.  Frequency transfer function assisted with the Monotonic Raw
       Receive Timestamp Extension Field
 
    One approach to determine the frequency-transfer offset with the
@@ -322,7 +322,7 @@ Table of Contents
    offset can be derived with a number of computed samples using
    techniques such as linear regression, etc.
 
-5.2.  Frequency transfer function assisted with the Monotonic Raw
+6.2.  Frequency transfer function assisted with the Monotonic Raw
       Transmit Timestamp Extension Field
 
    The Monotonic Raw Transmit Timestamp Extension Field should always be
@@ -342,18 +342,18 @@ Table of Contents
    from the monotonic raw timestamps would more truthfully reflect the
    true frequency-transfer offset between a server and client.
 
-6.  Security Considerations
+7.  Security Considerations
 
    As this document is intended to create discussion and consensus, it
    introduces no security considerations of its own.
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  References
+9.  References
 
-8.1.  Normative References
+9.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -369,7 +369,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-8.2.  Informative References
+9.2.  Informative References
 
    [Chrony-project]
               "Chrony 4.7", October 2025, <https://chrony-project.org>.
