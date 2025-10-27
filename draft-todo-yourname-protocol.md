@@ -137,7 +137,7 @@ In NTPv5 Use Cases and Requirements [I-D.ietf-ntp-ntpv5-requirements], it is rec
 # Monotonic RAW Timestamp Extension Fields
 In the Linux system, CLOCK_MONOTONIC_RAW is a clock source that is not subject to NTP adjustment, despite stepping or slewing a clock, see Figure 1. It provides a stable source to calculate the frequency-transfer offset and reduces the error that has been introduced using the Monotonic Receive Timestamp extension field. 
 
-# Monotonic Raw Receive Timestamp Extension Field
+## Monotonic Raw Receive Timestamp Extension Field
 An NTPv5 message contains multiple optional extension fields. A Monotonic Raw Receive Timestamp Extension Field is recommended in addition to the Monotonic Receive Timestamp extension field. It is also recommended to derive the frequency-transfer offset from the Monotonic Raw Receive Timestamp Extension Field if CLOCK_MONOTONIC_RAW is available. 
 The Monotonic Raw Receive Timestamp Extension Field has the same format of the Monotonic Receive Timestamp Extension Field. It complies to the constant length of 16 octets as defined in NTPv5. The counter and timestamp are set in response. This extension field enhances the accuracy of frequency-transfer function and further reduce synchronization time error. 
 
@@ -145,7 +145,7 @@ The Monotonic Raw Receive Timestamp Extension Field has the same format of the M
 The Monotonic Raw Receive Timestamp Extension Field appears to be insufficient when dealing with asymmetric packet delay variation (PDV) on the forward and backward paths. The same issue exists with the Monotonic Receive Timestamp Extension Field.
 The Monotonic Raw Transmit Timestamp Extension Field is included to identify link asymmetry (i.e., different PDV on forward and backward paths) and reduce related errors. The Monotonic Raw Transmit Timestamp Extension Field has the same format of the Monotonic Receive Timestamp Extension Field. 
 
-## Frequency to The Root Server Extension Field
+# Frequency to The Root Server Extension Field
 In NTPv5, the frequency-transfer offset is computed as the offset of a client relative to its immediate preceding server. A client is able to synchronize with the primary server (i.e., the root server) only if its preceding server has synchronized its frequency with the primary server. The Frequency To The Root Server Extension Field is an optional field that can be used to expedite the convergence speed when synchronizing time. 
 The Frequency To The Root Server Extension Field contains the frequency-transfer offset of a client relative to the Realtime clock of the primary server. This extension field has a fixed length of 12 octets. The 1-bit sign bit is a binary number indicates if the frequency of a client is faster (1) or slower (0) relative to the primary server. The absolute frequency-transfer offset relative to the primary server is carried by the remaining 31-bit.  
 
