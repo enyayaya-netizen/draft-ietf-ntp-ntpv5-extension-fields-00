@@ -75,9 +75,9 @@ Table of Contents
      2.1.  Terminology
    3.  Monotonic Receive Timestamp Extension Field in NTPv5
    4.  Monotonic RAW Timestamp Extension Fields
-   5.  Monotonic Raw Receive Timestamp Extension Field
-     5.1.  Monotonic Raw Transmit Timestamp Extension Field
-     5.2.  Frequency to The Root Server Extension Field
+     4.1.  Monotonic Raw Receive Timestamp Extension Field
+     4.2.  Monotonic Raw Transmit Timestamp Extension Field
+   5.  Frequency to The Root Server Extension Field
    6.  Implementing the frequency transfer function with different
            timestamps
      6.1.  Frequency transfer function assisted with the Monotonic Raw
@@ -186,7 +186,7 @@ Table of Contents
    frequency-transfer offset and reduces the error that has been
    introduced using the Monotonic Receive Timestamp extension field.
 
-5.  Monotonic Raw Receive Timestamp Extension Field
+4.1.  Monotonic Raw Receive Timestamp Extension Field
 
    An NTPv5 message contains multiple optional extension fields.  A
    Monotonic Raw Receive Timestamp Extension Field is recommended in
@@ -201,7 +201,7 @@ Table of Contents
    frequency-transfer function and further reduce synchronization time
    error.
 
-5.1.  Monotonic Raw Transmit Timestamp Extension Field
+4.2.  Monotonic Raw Transmit Timestamp Extension Field
 
    The Monotonic Raw Receive Timestamp Extension Field appears to be
    insufficient when dealing with asymmetric packet delay variation
@@ -213,7 +213,7 @@ Table of Contents
    Extension Field has the same format of the Monotonic Receive
    Timestamp Extension Field.
 
-5.2.  Frequency to The Root Server Extension Field
+5.  Frequency to The Root Server Extension Field
 
    In NTPv5, the frequency-transfer offset is computed as the offset of
    a client relative to its immediate preceding server.  A client is

@@ -1166,17 +1166,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-monotonic-raw-timestamp-ext" class="internal xref">Monotonic RAW Timestamp Extension Fields</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-monotonic-raw-receive-times" class="internal xref">Monotonic Raw Receive Timestamp Extension Field</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-monotonic-raw-transmit-time" class="internal xref">Monotonic Raw Transmit Timestamp Extension Field</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-monotonic-raw-receive-times" class="internal xref">Monotonic Raw Receive Timestamp Extension Field</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-frequency-to-the-root-serve" class="internal xref">Frequency to The Root Server Extension Field</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-monotonic-raw-transmit-time" class="internal xref">Monotonic Raw Transmit Timestamp Extension Field</a></p>
 </li>
             </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-frequency-to-the-root-serve" class="internal xref">Frequency to The Root Server Extension Field</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-implementing-the-frequency-" class="internal xref">Implementing the frequency transfer function with different timestamps</a></p>
@@ -1275,32 +1275,34 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-monotonic-raw-timestamp-ext" class="section-name selfRef">Monotonic RAW Timestamp Extension Fields</a>
       </h2>
 <p id="section-4-1">In the Linux system, CLOCK_MONOTONIC_RAW is a clock source that is not subject to NTP adjustment, despite stepping or slewing a clock, see Figure 1. It provides a stable source to calculate the frequency-transfer offset and reduces the error that has been introduced using the Monotonic Receive Timestamp extension field.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<div id="monotonic-raw-receive-timestamp-extension-field">
+<section id="section-4.1">
+        <h3 id="name-monotonic-raw-receive-times">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-monotonic-raw-receive-times" class="section-name selfRef">Monotonic Raw Receive Timestamp Extension Field</a>
+        </h3>
+<p id="section-4.1-1">An NTPv5 message contains multiple optional extension fields. A Monotonic Raw Receive Timestamp Extension Field is recommended in addition to the Monotonic Receive Timestamp extension field. It is also recommended to derive the frequency-transfer offset from the Monotonic Raw Receive Timestamp Extension Field if CLOCK_MONOTONIC_RAW is available. 
+The Monotonic Raw Receive Timestamp Extension Field has the same format of the Monotonic Receive Timestamp Extension Field. It complies to the constant length of 16 octets as defined in NTPv5. The counter and timestamp are set in response. This extension field enhances the accuracy of frequency-transfer function and further reduce synchronization time error.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="monotonic-raw-receive-timestamp-extension-field">
-<section id="section-5">
-      <h2 id="name-monotonic-raw-receive-times">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-monotonic-raw-receive-times" class="section-name selfRef">Monotonic Raw Receive Timestamp Extension Field</a>
-      </h2>
-<p id="section-5-1">An NTPv5 message contains multiple optional extension fields. A Monotonic Raw Receive Timestamp Extension Field is recommended in addition to the Monotonic Receive Timestamp extension field. It is also recommended to derive the frequency-transfer offset from the Monotonic Raw Receive Timestamp Extension Field if CLOCK_MONOTONIC_RAW is available. 
-The Monotonic Raw Receive Timestamp Extension Field has the same format of the Monotonic Receive Timestamp Extension Field. It complies to the constant length of 16 octets as defined in NTPv5. The counter and timestamp are set in response. This extension field enhances the accuracy of frequency-transfer function and further reduce synchronization time error.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <div id="monotonic-raw-transmit-timestamp-extension-field">
-<section id="section-5.1">
+<section id="section-4.2">
         <h3 id="name-monotonic-raw-transmit-time">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-monotonic-raw-transmit-time" class="section-name selfRef">Monotonic Raw Transmit Timestamp Extension Field</a>
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-monotonic-raw-transmit-time" class="section-name selfRef">Monotonic Raw Transmit Timestamp Extension Field</a>
         </h3>
-<p id="section-5.1-1">The Monotonic Raw Receive Timestamp Extension Field appears to be insufficient when dealing with asymmetric packet delay variation (PDV) on the forward and backward paths. The same issue exists with the Monotonic Receive Timestamp Extension Field.
-The Monotonic Raw Transmit Timestamp Extension Field is included to identify link asymmetry (i.e., different PDV on forward and backward paths) and reduce related errors. The Monotonic Raw Transmit Timestamp Extension Field has the same format of the Monotonic Receive Timestamp Extension Field.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">The Monotonic Raw Receive Timestamp Extension Field appears to be insufficient when dealing with asymmetric packet delay variation (PDV) on the forward and backward paths. The same issue exists with the Monotonic Receive Timestamp Extension Field.
+The Monotonic Raw Transmit Timestamp Extension Field is included to identify link asymmetry (i.e., different PDV on forward and backward paths) and reduce related errors. The Monotonic Raw Transmit Timestamp Extension Field has the same format of the Monotonic Receive Timestamp Extension Field.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="frequency-to-the-root-server-extension-field">
-<section id="section-5.2">
-        <h3 id="name-frequency-to-the-root-serve">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-frequency-to-the-root-serve" class="section-name selfRef">Frequency to The Root Server Extension Field</a>
-        </h3>
-<p id="section-5.2-1">In NTPv5, the frequency-transfer offset is computed as the offset of a client relative to its immediate preceding server. A client is able to synchronize with the primary server (i.e., the root server) only if its preceding server has synchronized its frequency with the primary server. The Frequency To The Root Server Extension Field is an optional field that can be used to expedite the convergence speed when synchronizing time. 
-The Frequency To The Root Server Extension Field contains the frequency-transfer offset of a client relative to the Realtime clock of the primary server. This extension field has a fixed length of 12 octets. The 1-bit sign bit is a binary number indicates if the frequency of a client is faster (1) or slower (0) relative to the primary server. The absolute frequency-transfer offset relative to the primary server is carried by the remaining 31-bit.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<div class="lang-text sourcecode" id="section-5.2-2">
+<section id="section-5">
+      <h2 id="name-frequency-to-the-root-serve">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-frequency-to-the-root-serve" class="section-name selfRef">Frequency to The Root Server Extension Field</a>
+      </h2>
+<p id="section-5-1">In NTPv5, the frequency-transfer offset is computed as the offset of a client relative to its immediate preceding server. A client is able to synchronize with the primary server (i.e., the root server) only if its preceding server has synchronized its frequency with the primary server. The Frequency To The Root Server Extension Field is an optional field that can be used to expedite the convergence speed when synchronizing time. 
+The Frequency To The Root Server Extension Field contains the frequency-transfer offset of a client relative to the Realtime clock of the primary server. This extension field has a fixed length of 12 octets. The 1-bit sign bit is a binary number indicates if the frequency of a client is faster (1) or slower (0) relative to the primary server. The absolute frequency-transfer offset relative to the primary server is carried by the remaining 31-bit.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div class="lang-text sourcecode" id="section-5-2">
 <pre>
   0                   1                   2                   3
   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1309,13 +1311,11 @@ The Frequency To The Root Server Extension Field contains the frequency-transfer
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |s|               Frequency To The Root Server (31)             |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-</pre><a href="#section-5.2-2" class="pilcrow">¶</a>
+</pre><a href="#section-5-2" class="pilcrow">¶</a>
 </div>
-<p id="section-5.2-3">Figure 2 Format of a Frequency To The Root Server Extension Field.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.2-4">Assume a multi-hop scenario with n stratum levels. The primary server determines the frequency offset between the Realtime clock and the Monotonic Raw clock, and include this value into the Frequency To The Root Server Extension Field. The frequency-transfer offset of a server at stratum level i (2&lt;i&lt;=n) relative to its immediate preceding server is determined using the Monotonic Raw Receive Timestamp Extension Field (or with the Monotonic Receive Timestamp Extension Field if the clock is stepped). When receiving an NTP message, a server at stratum level i (2&lt;i&lt;=n) reads the Frequency To The Root Server Extension Field, and adds the frequency-transfer offset that it computed locally to the existing value. This way, the frequency-transfer offset of a server relative to the primary server is captured and passed down to the succeeding nodes.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.2-5">For simplicity, assume that all nodes (other than the primary server) have successfully learnt their frequency-transfer offset relative to the preceding server at time t_k. Without the Frequency To The Root Server Extension Field, synchronization of a server to the primary server happens sequentially in time, i.e., a server with stratum level i needs to wait for its immediate preceding server (with stratum level i-1) to complete the operation of setting frequency-transfer offset. Note the operation of setting frequency offset is decoupled with NTP message exchange. This can take longer for the server at the last stratum level to synchronize with the primary server. With the assist of the Frequency To The Root Server Extension Field, the frequency-transfer offset of a server relative to the primary server can be immediately passed down in an NTP message, allowing the succeeding nodes to synchronize their frequency relative to the primary server once receiving that message.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
-</section>
-</div>
+<p id="section-5-3">Figure 2 Format of a Frequency To The Root Server Extension Field.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-4">Assume a multi-hop scenario with n stratum levels. The primary server determines the frequency offset between the Realtime clock and the Monotonic Raw clock, and include this value into the Frequency To The Root Server Extension Field. The frequency-transfer offset of a server at stratum level i (2&lt;i&lt;=n) relative to its immediate preceding server is determined using the Monotonic Raw Receive Timestamp Extension Field (or with the Monotonic Receive Timestamp Extension Field if the clock is stepped). When receiving an NTP message, a server at stratum level i (2&lt;i&lt;=n) reads the Frequency To The Root Server Extension Field, and adds the frequency-transfer offset that it computed locally to the existing value. This way, the frequency-transfer offset of a server relative to the primary server is captured and passed down to the succeeding nodes.<a href="#section-5-4" class="pilcrow">¶</a></p>
+<p id="section-5-5">For simplicity, assume that all nodes (other than the primary server) have successfully learnt their frequency-transfer offset relative to the preceding server at time t_k. Without the Frequency To The Root Server Extension Field, synchronization of a server to the primary server happens sequentially in time, i.e., a server with stratum level i needs to wait for its immediate preceding server (with stratum level i-1) to complete the operation of setting frequency-transfer offset. Note the operation of setting frequency offset is decoupled with NTP message exchange. This can take longer for the server at the last stratum level to synchronize with the primary server. With the assist of the Frequency To The Root Server Extension Field, the frequency-transfer offset of a server relative to the primary server can be immediately passed down in an NTP message, allowing the succeeding nodes to synchronize their frequency relative to the primary server once receiving that message.<a href="#section-5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="implementing-the-frequency-transfer-function-with-different-timestamps">
