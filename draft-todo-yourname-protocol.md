@@ -137,7 +137,7 @@ In NTPv5 Use Cases and Requirements [I-D.ietf-ntp-ntpv5-requirements], it is rec
 # Monotonic RAW Timestamp Extension Fields
 In the Linux system, CLOCK_MONOTONIC_RAW is a clock source that is not subject to NTP adjustment, despite stepping or slewing a clock, see Figure 1. It provides a stable source to calculate the frequency-transfer offset and reduces the error that has been introduced using the Monotonic Receive Timestamp extension field. 
 
-## Monotonic Raw Receive Timestamp Extension Field
+# Monotonic Raw Receive Timestamp Extension Field
 An NTPv5 message contains multiple optional extension fields. A Monotonic Raw Receive Timestamp Extension Field is recommended in addition to the Monotonic Receive Timestamp extension field. It is also recommended to derive the frequency-transfer offset from the Monotonic Raw Receive Timestamp Extension Field if CLOCK_MONOTONIC_RAW is available. 
 The Monotonic Raw Receive Timestamp Extension Field has the same format of the Monotonic Receive Timestamp Extension Field. It complies to the constant length of 16 octets as defined in NTPv5. The counter and timestamp are set in response. This extension field enhances the accuracy of frequency-transfer function and further reduce synchronization time error. 
 
